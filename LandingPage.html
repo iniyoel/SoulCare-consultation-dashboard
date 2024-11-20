@@ -13,7 +13,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100%;
+            min-height: 95vh;
             margin: 0;
         }
         h1{
@@ -49,6 +49,14 @@
             height: 100px;
             margin-bottom: 10px;    
         }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        a:hover{
+            color: black;
+            text-decoration: none;
+        }
     </style>
 </head>
 
@@ -61,18 +69,23 @@
 
         <!-- Options -->
         <div class="row justify-content-center mt-5">
-            <div class="col-md-3 d-flex justify-content-center">
-                <div class="option-card">
-                    <img src="Resource/Konselor.png" alt="Konselor Sebaya">
-                    <h5>Konselor Sebaya</h5>
+                <div class="col-md-3 d-flex justify-content-center">
+                    <a href="Login.html">
+                        <div class="option-card">
+                            <img src="Resource/Konselor.png" alt="Konselor Sebaya">
+                            <h5>Konselor Sebaya</h5>
+                        </div>
+                    </a>
                 </div>
-            </div>
-            <div class="col-md-3 d-flex justify-content-center">
-                <div class="option-card">
-                    <img src="Resource/GuruBK.png" alt="Guru BK">
-                    <h5>Guru BK</h5>
+
+                <div class="col-md-3 d-flex justify-content-center">
+                    <a href="Login.html">
+                        <div class="option-card">
+                            <img src="Resource/GuruBK.png" alt="Guru BK">
+                            <h5>Guru BK</h5>
+                        </div>
+                    </a>
                 </div>
-            </div>
         </div>
     </div>
 
