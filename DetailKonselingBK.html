@@ -125,9 +125,9 @@
                     <div class="menu-dropdown">
                         <a href="RekapData.html" class="btn">Rekap Data</a>
                         <div class="dropdown-submenu">
-                            <a href="RekapDataKelas7.html" class="d-block">Kelas 7</a>
-                            <a href="RekapDataKelas8.html" class="d-block">Kelas 8</a>
-                            <a href="RekapDataKelas9.html" class="d-block">Kelas 9</a>
+                            <a href="kelas7.html" class="d-block">Kelas 7</a>
+                            <a href="kelas8.html" class="d-block">Kelas 8</a>
+                            <a href="kelas9.html" class="d-block">Kelas 9</a>
                         </div>
                     </div>
                     <a href="MateriKonselingBK.html" class="btn">Materi</a>
@@ -140,48 +140,38 @@
             <div class="col-md-10 mb-3">
                 <div class="content">
                     <img src="Resource/Rantai.png" class="spiral" alt="Jilid Spiral">
-                    <h2 style="font-weight: 700;">Upload Materi</h2>
-                    <form>
-                        <div class="form-group mt-4 d-flex align-items-center">
-                            <label for="JudulMateri" class="mr-3" style="flex: 1; font-weight: bold;">Judul Materi</label>
-                            <div style="flex: 3;">
-                                <input type="text" id="Judul Materi" class="form-control" required>
-                            </div>
-                        </div>
-                
-                        <div class="form-group mt-4 d-flex align-items-center">
-                            <label for="deskripsiMasalah" class="mr-3" style="flex: 1; font-weight: bold;">Deskripsi Masalah</label>
-                            <div style="flex: 3;">
-                                <textarea id="deskripsiMasalah" class="form-control" rows="4" required></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group mt-4 d-flex align-items-center">
-                            <label for="LinkMateri" class="mr-3" style="flex: 1; font-weight: bold;">Link Materi</label>
-                            <div style="flex: 3;">
-                                <input type="text" id="Link Materi" class="form-control" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group mt-4 d-flex align-items-center">
-                            <label for="uploadFiles" class="mr-3" style="flex: 1; font-weight: bold;">Upload File</label>
-                            <div style="flex: 3; position: relative; ">
-                                    <!-- Input teks -->
-                                    <input type="text" id="fileText" class="form-control">
-                                    <!-- Tombol unggah -->
-                                    <button id="fileUploadBtn" class="btn-upload" style="position: absolute; right: 0; top: 0; height: 100%; border: none; background-color: #4682B4; color: white; padding: 0 20px; border-radius: 0 5px 5px 0;">
-                                        Unggah
-                                    <input type="file" id="uploadFile" class="form-control" style="opacity: 0; position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;">
-                                </div>
-                                <span style="margin-left: 10px; font-size: 12px; color: grey;">*Dokumen maksimal 100 MB</span>
-                        </div>
-                        
-                        <div class="form-group mt-5 d-flex justify-content-end">
-                            <button type="submit" class="btn btn-save">Simpan</button>
-                        </div>
-                    </form>
+            
+                    <!-- Deskripsi Masalah -->
+                    <div class="form-group mt-4">
+                        <label for="deskripsiMasalah">Deskripsi Masalah:</label>
+                        <textarea id="deskripsiMasalah" class="form-control" rows="15" readonly></textarea>
+                    </div>
+            
+                    <!-- Tombol Selanjutnya -->
+                    <div class="form-group mt-4 d-flex justify-content-end">
+                        <button type="button" class="btn btn-save" onclick="nextPage()">Kembali</button>
+                    </div>
                 </div>
             </div>
+            
+            <script>
+                // Ambil deskripsi masalah dari localStorage dan tampilkan di textarea
+                document.addEventListener("DOMContentLoaded", () => {
+                    const deskripsi = localStorage.getItem("deskripsiMasalah");
+                    if (deskripsi) {
+                        document.getElementById("deskripsiMasalah").value = deskripsi;
+                    } else {
+                        document.getElementById("deskripsiMasalah").value = "Tidak ada deskripsi masalah yang tersedia.";
+                    }
+                });
+            
+                // Fungsi untuk tombol selanjutnya
+                function nextPage() {
+                    // Arahkan ke halaman berikutnya
+                    window.location.href = "riwayatKonseling.html";
+                }
+            </script>
+            
         </div>
     </div>
 
