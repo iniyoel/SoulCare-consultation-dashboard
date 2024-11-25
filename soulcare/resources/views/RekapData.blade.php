@@ -118,7 +118,7 @@
             <p style="font-weight: 500; font-size: 35px;">SoulCare</p>
         </div>
         <div>
-            <a href="{{ url('/Awal') }}" class="mr-5">Logout</a>
+            <a href="{{ url('/') }}" class="mr-5">Logout</a>
         </div>
     </nav>
     <div class="container-fluid mt-4">
