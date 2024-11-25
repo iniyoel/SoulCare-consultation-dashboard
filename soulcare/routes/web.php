@@ -18,18 +18,24 @@ Route::get('/', function () {
     return view('LandingPage');
 });
 
+Route::get('/login', function () {
+    return view('Login');
+});
+
 Route::post('/login', function () {
     $username = request('username');
     $password = request('password');
 
+    // Logika login sederhana
     if ($username === 'guru' && $password === 'password') {
-        return redirect('/Rekap-Data');
+        return redirect('/Rekap-Data'); // Guru diarahkan ke Rekap Data
     } elseif ($username === 'konselor' && $password === 'password') {
-        return redirect('/Jurnal-Konseling');
+        return redirect('/Jurnal-Konseling'); // Konselor diarahkan ke Jurnal Konseling
     } else {
-        return redirect()->back()->withErrors(['Invalid credentials']);
+        return redirect()->back()->withErrors(['Invalid credentials']); // Login gagal
     }
 });
+
 //Halaman Konselor
 Route::get('/Jurnal-Konseling', function () {
     return view('JurnalKonseling');
