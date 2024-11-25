@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/Awal', function () {
+Route::get('/', function () {
     return view('LandingPage');
 });
 
