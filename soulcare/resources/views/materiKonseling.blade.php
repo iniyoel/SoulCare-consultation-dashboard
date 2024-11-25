@@ -94,11 +94,11 @@
 <body>
     <nav class="navbar navbar-custom d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
-            <img src="Resource/Logo.png" alt="Logo" style="width: 15%; margin-right: 10px;">
+            <img src="{{ asset('Resource/Logo.png') }}" alt="Logo" style="width: 15%; margin-right: 10px;">
             <p style="font-weight: 500; font-size: 35px;">SoulCare</p>
         </div>
         <div>
-            <a href="LandingPage.html" class="mr-5">Logout</a>
+            <a href="{{ url('/Awal') }}" class="mr-5">Logout</a>
         </div>
     </nav>
     <div class="container-fluid mt-4">
@@ -106,30 +106,30 @@
             <div class="col-md-2">
                 <div class="sidebar">
                     <h1 style="font-weight: 600;">Konselor</h1>
-                    <img src="Resource/profile.png" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
+                    <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
                     <h5>Nama Konselor</h5>
                     <p style="color: red;">Kelas</p>
-                    <a href="JurnalKonseling.html" class="btn">Jurnal</a>
-                    <a href="riwayatKonseling.html" class="btn">Riwayat</a>
-                    <a href="materiKonseling.html" class="btn">Materi</a>
-                    <a href="keluhanKonselor.html" class="btn">Keluhan</a>
+                    <a href="{{ url('/Jurnal-Konseling') }}" class="btn">Jurnal</a>
+                    <a href="{{ url('/Riwayat-Konseling') }}" class="btn">Riwayat</a>
+                    <a href="{{ url('/Materi-Konseling') }}" class="btn">Materi</a>
+                    <a href="{{ url('/Keluhan-Konseling') }}" class="btn">Keluhan</a>
                 </div>
             </div>
 
             <!-- Main Content -->
             <div class="col-md-10 mb-3">
                 <div class="content">
-                    <img src="Resource/Rantai.png" class="spiral" alt="Jilid Spiral">
+                    <img src="{{ asset('Resource/Rantai.png') }}" class="spiral" alt="Jilid Spiral">
                     <h2 style="font-weight: 700;">Materi Konseling</h2>
-            
+
                     <!-- Materi Konseling -->
                     <div class="mt-4">
                         <!-- Materi 1 -->
                         <div class="d-flex mb-4">
                             <!-- Video Placeholder -->
                             <div style="flex: 1; max-width: 360px; margin-right: 20px;">
-                                <iframe width="360" height="180" src="https://www.youtube.com/embed/example1" 
-                                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                <iframe width="360" height="180" src="https://www.youtube.com/embed/example1"
+                                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen></iframe>
                                     <a href="https://www.youtube.com/watch?v=example1" target="_blank">youtube.com</a>
                             </div>
@@ -137,16 +137,16 @@
                             <div style="flex: 3;">
                                 <h5 style="font-weight: bold;">Cara menjadi pendengar yang baik</h5>
                                 <p><a href="files/MenjadiPendengarBaik.pdf" download class="text-danger">Menjadi pendengar yang baik.pdf</a></p>
-                                
+
                             </div>
                         </div>
-            
+
                         <!-- Materi 2 -->
                         <div class="d-flex mb-4">
                             <!-- Video Placeholder -->
                             <div style="flex: 1; max-width: 360px; margin-right: 20px;">
-                                <iframe width="360" height="180" src="https://www.youtube.com/embed/example2" 
-                                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                <iframe width="360" height="180" src="https://www.youtube.com/embed/example2"
+                                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen></iframe>
                                     <a href="https://www.youtube.com/watch?v=example2" target="_blank">youtube.com</a>
                             </div>
@@ -154,11 +154,11 @@
                             <div style="flex: 3;">
                                 <h5 style="font-weight: bold;">Apa, Sih, Konseling Sebaya Itu?</h5>
                                 <p><a href="files/KonselingSebaya.pdf" download class="text-danger">Konseling Sebaya.pdf</a></p>
-                                
+
                             </div>
                         </div>
                     </div>
-            
+
                     <!-- Tombol Kembali dan Selanjutnya -->
                     <div class="d-flex justify-content-end">
                         <!-- <button type="button" class="btn btn-save" onclick="goBack()">Kembali</button> -->
@@ -166,19 +166,19 @@
                     </div>
                 </div>
             </div>
-            
+
             <script>
                 // Fungsi untuk tombol kembali
                 function goBack() {
                     window.history.back();
                 }
-            
+
                 // Fungsi untuk tombol selanjutnya
                 function nextPage() {
                     window.location.href = "halamanBerikutnya.html";
                 }
             </script>
-            
+
         </div>
     </div>
 

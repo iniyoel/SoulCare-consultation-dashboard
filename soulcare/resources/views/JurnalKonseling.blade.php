@@ -86,11 +86,11 @@
 <body>
     <nav class="navbar navbar-custom d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
-            <img src="Resource/Logo.png" alt="Logo" style="width: 15%; margin-right: 10px;">
+            <img src="{{ asset('Resource/Logo.png') }}" alt="Logo" style="width: 15%; margin-right: 10px;">
             <p style="font-weight: 500; font-size: 35px;">SoulCare</p>
         </div>
         <div>
-            <a href="LandingPage.html" class="mr-5">Logout</a>
+            <a href="{{ url('/Awal') }}" class="mr-5">Logout</a>
         </div>
     </nav>
     <div class="container-fluid mt-4">
@@ -98,20 +98,20 @@
             <div class="col-md-2">
                 <div class="sidebar">
                     <h1>Konselor</h1>
-                    <img src="Resource/profile.png" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
+                    <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
                     <h5>Nama Konselor</h5>
                     <p style="color: red;">Kelas</p>
-                    <a href="JurnalKonseling.html" class="btn">Jurnal</a>
-                    <a href="riwayatKonseling.html" class="btn">Riwayat</a>
-                    <a href="materiKonseling.html" class="btn">Materi</a>
-                    <a href="keluhanKonselor.html" class="btn">Keluhan</a>
+                    <a href="{{ url('/Jurnal-Konseling') }}" class="btn">Jurnal</a>
+                    <a href="{{ url('/Riwayat-Konseling') }}" class="btn">Riwayat</a>
+                    <a href="{{ url('/Materi-Konseling') }}" class="btn">Materi</a>
+                    <a href="{{ url('/Keluhan-Konseling') }}" class="btn">Keluhan</a>
                 </div>
             </div>
 
             <!-- Main Content -->
             <div class="col-md-10 mb-3">
                 <div class="content">
-                    <img src="Resource/Rantai.png" class="spiral" alt="Jilid Spiral">
+                    <img src="{{ asset('Resource/Rantai.png') }}" class="spiral" alt="Jilid Spiral">
                     <h2 style="font-weight: 700;">Jurnal Konseling</h2>
                     <form>
                         <div class="form-group mt-4 d-flex align-items-center">
@@ -125,14 +125,14 @@
                                 </datalist>
                             </div>
                         </div>
-                
+
                         <div class="form-group mt-4 d-flex align-items-center">
                             <label for="tanggalKonseling" class="mr-3" style="flex: 1; font-weight: bold;">Tanggal Konseling</label>
                             <div style="flex: 2;">
                                 <input type="date" id="tanggalKonseling" class="form-control" required>
                             </div>
                         </div>
-                
+
                         <div class="form-group mt-4 d-flex align-items-center">
                             <label for="jenisKelamin" class="mr-3" style="flex: 1; font-weight: bold;">Jenis Kelamin</label>
                             <div style="flex: 2;">
@@ -143,7 +143,7 @@
                                 </select>
                             </div>
                         </div>
-                
+
                         <div class="form-group mt-4 d-flex align-items-center">
                             <label for="jenisMasalah" class="mr-3" style="flex: 1; font-weight: bold;">Jenis Masalah</label>
                             <div style="flex: 2;">
@@ -157,14 +157,14 @@
                                 </select>
                             </div>
                         </div>
-                
+
                         <div class="form-group mt-4 d-flex align-items-center">
                             <label for="deskripsiMasalah" class="mr-3" style="flex: 1; font-weight: bold;">Deskripsi Masalah</label>
                             <div style="flex: 2;">
                                 <textarea id="deskripsiMasalah" class="form-control" rows="3" required></textarea>
                             </div>
                         </div>
-                
+
                         <div class="form-group mt-4 d-flex align-items-center">
                             <label for="rujukan" class="mr-3" style="flex: 1; font-weight: bold;">Rujukan</label>
                             <div style="flex: 2;">
@@ -175,7 +175,7 @@
                                 </select>
                             </div>
                         </div>
-                
+
                         <div class="form-group mt-4 d-flex justify-content-end">
                             <button type="submit" class="btn btn-save">Simpan</button>
                         </div>

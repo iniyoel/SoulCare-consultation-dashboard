@@ -94,11 +94,11 @@
 <body>
     <nav class="navbar navbar-custom d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
-            <img src="Resource/Logo.png" alt="Logo" style="width: 15%; margin-right: 10px;">
+            <img src="{{ asset('Resource/Logo.png') }}" alt="Logo" style="width: 15%; margin-right: 10px;">
             <p style="font-weight: 500; font-size: 35px;">SoulCare</p>
         </div>
         <div>
-            <a href="LandingPage.html" class="mr-5">Logout</a>
+            <a href="{{ url('/Awal') }}" class="mr-5">Logout</a>
         </div>
     </nav>
     <div class="container-fluid mt-4">
@@ -106,13 +106,13 @@
             <div class="col-md-2">
                 <div class="sidebar">
                     <h1 style="font-weight: 600;">Konselor</h1>
-                    <img src="Resource/profile.png" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
+                    <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
                     <h5>Nama Konselor</h5>
                     <p style="color: red;">Kelas</p>
-                    <a href="JurnalKonseling.html" class="btn">Jurnal</a>
-                    <a href="riwayatKonseling.html" class="btn">Riwayat</a>
-                    <a href="materiKonseling.html" class="btn">Materi</a>
-                    <a href="keluhanKonselor.html" class="btn">Keluhan</a>
+                    <a href="{{ url('/Jurnal-Konseling') }}" class="btn">Jurnal</a>
+                    <a href="{{ url('/Riwayat-Konseling') }}" class="btn">Riwayat</a>
+                    <a href="{{ url('/Materi-Konseling') }}" class="btn">Materi</a>
+                    <a href="{{ url('/Keluhan-Konseling') }}" class="btn">Keluhan</a>
                 </div>
             </div>
 
@@ -120,20 +120,20 @@
             <div class="col-md-10 mb-3">
                 <div class="content">
                     <img src="Resource/Rantai.png" class="spiral" alt="Jilid Spiral">
-            
+
                     <!-- Deskripsi Masalah -->
                     <div class="form-group mt-4">
                         <label for="deskripsiMasalah">Deskripsi Masalah:</label>
                         <textarea id="deskripsiMasalah" class="form-control" rows="15" readonly></textarea>
                     </div>
-            
+
                     <!-- Tombol Selanjutnya -->
                     <div class="form-group mt-4 d-flex justify-content-end">
                         <button type="button" class="btn btn-save" onclick="nextPage()">Kembali</button>
                     </div>
                 </div>
             </div>
-            
+
             <script>
                 // Ambil deskripsi masalah dari localStorage dan tampilkan di textarea
                 document.addEventListener("DOMContentLoaded", () => {
@@ -144,14 +144,14 @@
                         document.getElementById("deskripsiMasalah").value = "Tidak ada deskripsi masalah yang tersedia.";
                     }
                 });
-            
+
                 // Fungsi untuk tombol selanjutnya
                 function nextPage() {
                     // Arahkan ke halaman berikutnya
-                    window.location.href = "riwayatKonseling.html";
+                    window.location.href = "{{ url('/Riwayat-Konseling') }}";
                 }
             </script>
-            
+
         </div>
     </div>
 

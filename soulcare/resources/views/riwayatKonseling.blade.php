@@ -121,11 +121,11 @@
 <body>
     <nav class="navbar navbar-custom d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
-            <img src="Resource/Logo.png" alt="Logo" style="width: 15%; margin-right: 10px;">
+            <img src="{{ asset('Resource/Logo.png') }}" alt="Logo" style="width: 15%; margin-right: 10px;">
             <p style="font-weight: 500; font-size: 35px;">SoulCare</p>
         </div>
         <div>
-            <a href="LandingPage.html" class="mr-5">Logout</a>
+            <a href="{{ url('/Awal') }}" class="mr-5">Logout</a>
         </div>
     </nav>
     <div class="container-fluid mt-4">
@@ -133,22 +133,22 @@
             <div class="col-md-2">
                 <div class="sidebar">
                     <h1 style="font-weight: 600;">Konselor</h1>
-                    <img src="Resource/profile.png" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
+                    <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
                     <h5>Nama Konselor</h5>
                     <p style="color: red;">Kelas</p>
-                    <a href="JurnalKonseling.html" class="btn">Jurnal</a>
-                    <a href="riwayatKonseling.html" class="btn">Riwayat</a>
-                    <a href="materiKonseling.html" class="btn">Materi</a>
-                    <a href="keluhanKonselor.html" class="btn">Keluhan</a>
+                    <a href="{{ url('/Jurnal-Konseling') }}" class="btn">Jurnal</a>
+                    <a href="{{ url('/Riwayat-Konseling') }}" class="btn">Riwayat</a>
+                    <a href="{{ url('/Materi-Konseling') }}" class="btn">Materi</a>
+                    <a href="{{ url('/Keluhan-Konseling') }}" class="btn">Keluhan</a>
                 </div>
             </div>
 
             <!-- Main Content -->
             <div class="col-md-10 mb-3">
                 <div class="content">
-                    <img src="Resource/Rantai.png" class="spiral" alt="Jilid Spiral">
+                    <img src="{{ asset('Resource/Rantai.png') }}" class="spiral" alt="Jilid Spiral">
                     <h2 style="font-weight: 700;">Riwayat Konseling</h2>
-                    
+
                     <!-- Tabel Riwayat Konseling -->
                     <div class="table-responsive mt-4">
                         <table class="table table-bordered text-center">
@@ -170,7 +170,7 @@
                                     <td>Niall Horan</td>
                                     <td>L</td>
                                     <td><span class="badge karir">Karir</span></td>
-                                    <td><a href="detail-riwayatKonseling.html" class="text-danger">Detail</a></td>
+                                    <td><a href="{{ url('/Detail-Konseling') }}" class="text-danger">Detail</a></td>
                                     <td>Ya</td>
                                 </tr>
                                 <tr>
@@ -179,7 +179,7 @@
                                     <td>Lady Gaga</td>
                                     <td>P</td>
                                     <td><span class="badge belajar">Belajar</span></td>
-                                    <td><a href="detail-riwayatKonseling.html" class="text-danger">Detail</a></td>
+                                    <td><a href="{{ url('/Detail-Konseling') }}" class="text-danger">Detail</a></td>
                                     <td>Tidak</td>
                                 </tr>
                                 <tr>
@@ -188,7 +188,7 @@
                                     <td>Lady Gaga</td>
                                     <td>P</td>
                                     <td><span class="badge belajar">Belajar</span></td>
-                                    <td><a href="detail-riwayatKonseling.html" class="text-danger">Detail</a></td>
+                                    <td><a href="{{ url('/Detail-Konseling') }}" class="text-danger">Detail</a></td>
                                     <td>Tidak</td>
                                 </tr>
                                 <tr>
@@ -197,7 +197,7 @@
                                     <td>Lady Gaga</td>
                                     <td>P</td>
                                     <td><span class="badge belajar">Belajar</span></td>
-                                    <td><a href="detail-riwayatKonseling.html" class="text-danger">Detail</a></td>
+                                    <td><a href="{{ url('/Detail-Konseling') }}" class="text-danger">Detail</a></td>
                                     <td>Tidak</td>
                                 </tr>
                                 <tr>
@@ -206,7 +206,7 @@
                                     <td>Lady Gaga</td>
                                     <td>P</td>
                                     <td><span class="badge belajar">Belajar</span></td>
-                                    <td><a href="detail-riwayatKonseling.html" class="text-danger">Detail</a></td>
+                                    <td><a href="{{ url('/Detail-Konseling') }}" class="text-danger">Detail</a></td>
                                     <td>Tidak</td>
                                 </tr>
                             </tbody>

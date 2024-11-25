@@ -162,18 +162,18 @@
     .label.lainnya {
         background-color: #9966FF; /* Ungu untuk Lainnya */
     }
-        
+
     </style>
 </head>
 
 <body>
     <nav class="navbar navbar-custom d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
-            <img src="Resource/Logo.png" alt="Logo" style="width: 15%; margin-right: 10px;">
+            <img src="{{ asset('Resource/Logo.png') }}" alt="Logo" style="width: 15%; margin-right: 10px;">
             <p style="font-weight: 500; font-size: 35px;">SoulCare</p>
         </div>
         <div>
-            <a href="LandingPage.html" class="mr-5">Logout</a>
+            <a href="{{ url('/Awal') }}" class="mr-5">Logout</a>
         </div>
     </nav>
     <div class="container-fluid mt-4">
@@ -181,26 +181,26 @@
             <div class="col-md-2">
                 <div class="sidebar">
                     <h1 style="font-weight: 600;">Guru BK</h1>
-                    <img src="Resource/profile.png" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
+                    <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
                     <h5>Nama</h5>
                     <div class="menu-dropdown">
-                        <a href="#" class="btn">Rekap Data</a>
+                        <a href="{{ url('/Rekap-Data') }}" class="btn">Rekap Data</a>
                         <div class="dropdown-submenu">
-                            <a href="RekapDataKelas7.html" class="d-block">Kelas 7</a>
-                            <a href="RekapDataKelas8.html" class="d-block">Kelas 8</a>
-                            <a href="RekapDataKelas9.html" class="d-block">Kelas 9</a>
+                            <a href="{{ url('/Rekap-Data/Kelas7') }}" class="d-block">Kelas 7</a>
+                            <a href="{{ url('/Rekap-Data/Kelas8') }}" class="d-block">Kelas 8</a>
+                            <a href="{{ url('/Rekap-Data/Kelas9') }}" class="d-block">Kelas 9</a>
                         </div>
                     </div>
-                    <a href="MateriKonselingBK.html" class="btn">Materi</a>
-                    <a href="UploadMateri.html" class="btn">Upload Materi</a>
-                    <a href="KeluhanBK.html" class="btn">Keluhan</a>
+                    <a href="{{ url('/Materi-KonselingBK') }}" class="btn">Materi</a>
+                    <a href="{{ url('/Upload-Materi') }}" class="btn">Upload Materi</a>
+                    <a href="{{ url('/Keluhan-BK') }}" class="btn">Keluhan</a>
                 </div>
             </div>
 
             <!-- Main Content -->
             <div class="col-md-10 mb-3">
                 <div class="content">
-                    <img src="Resource/Rantai.png" class="spiral" alt="Jilid Spiral">
+                    <img src="{{ asset('Resource/Rantai.png') }}" class="spiral" alt="Jilid Spiral">
                     <h2 style="font-weight: 700;">Rekap Data Konseling</h2>
                     <h4 style="font-weight: 700;">Persebaran Masalah Siswa Secara Keseluruhan</h4>
 
@@ -224,9 +224,9 @@
                     </div>
                     <div class="chart-container mt-4">
                         <canvas id="pieChart" width="600" height="600"></canvas>
-                        
+
                     </div>
-                    
+
 
                     <!-- Tabel -->
                     <div class="table-container mt-4">
@@ -312,12 +312,12 @@
                 maintainAspectRatio: false,
                 plugins: {
                     legend: {
-                        display: false 
+                        display: false
                     },
                     datalabels: {
-                        color: '#000', 
+                        color: '#000',
                         font: {
-                            size: 12, 
+                            size: 12,
                             weight: 'bold'
                         },
                         formatter: (value, context) => {
@@ -325,10 +325,10 @@
                             const percentage = ((value / total) * 100).toFixed(2);
                             return `${context.chart.data.labels[context.dataIndex]}\n${percentage}%`;
                         },
-                        anchor: 'end', 
-                        align: 'end', 
+                        anchor: 'end',
+                        align: 'end',
                         offset: 10,
-                        clip: false 
+                        clip: false
                     }
                 },
                 layout: {
@@ -342,9 +342,9 @@
             },
             plugins: [ChartDataLabels]
         });
-    </script>   
-    
-    
+    </script>
+
+
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>

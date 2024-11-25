@@ -58,14 +58,16 @@
 </head>
 <body>
     <div class="text-center">
-        <img src="Resource/Logo.png" alt="SoulCare Logo" class="logo">
+        <img src="{{ asset('Resource/Logo.png') }}" alt="SoulCare Logo" class="logo">
         <div class="login-card">
-            <form>
+            <!-- FORM LOGIN -->
+            <form method="POST" action="{{ url('/login') }}">
+                @csrf <!-- Token CSRF Laravel untuk keamanan -->
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Username" required>
+                    <input type="text" name="username" class="form-control" placeholder="Username" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" required>
+                    <input type="password" name="password" class="form-control" placeholder="Password" required>
                 </div>
                 <button type="submit" class="btn btn-login">Login</button>
             </form>

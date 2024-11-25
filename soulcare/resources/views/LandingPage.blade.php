@@ -20,7 +20,7 @@
             font-size: 50px;
         }
         .logo {
-            max-width: 30%; 
+            max-width: 30%;
         }
 
         .option-card {
@@ -47,7 +47,7 @@
         .option-card img {
             width: auto;
             height: 100px;
-            margin-bottom: 10px;    
+            margin-bottom: 10px;
         }
         a{
             text-decoration: none;
@@ -62,26 +62,26 @@
 
 <body>
     <div class="container text-center m-auto">
-        <img src="Resource/Logo.png" alt="SoulCare Logo" class="logo mb-3">
-        
+        <img src="{{ asset('Resource/Logo.png') }}" alt="SoulCare Logo" class="logo mb-3">
+
         <!-- Title -->
         <h1 class="font-weight-bold">Selamat Datang!</h1>
 
         <!-- Options -->
         <div class="row justify-content-center mt-5">
                 <div class="col-md-3 d-flex justify-content-center">
-                    <a href="Login.blade.php">
+                    <a href="{{ url('/login') }}">
                         <div class="option-card">
-                            <img src="Resource/Konselor.png" alt="Konselor Sebaya">
+                            <img src="{{ asset('Resource/Konselor.png') }}" alt="Konselor Sebaya">
                             <h5>Konselor Sebaya</h5>
                         </div>
                     </a>
                 </div>
 
                 <div class="col-md-3 d-flex justify-content-center">
-                    <a href="Login.html">
+                    <a href="{{ url('/login') }}">
                         <div class="option-card">
-                            <img src="Resource/GuruBK.png" alt="Guru BK">
+                            <img src="{{ asset('Resource/GuruBK.png') }}" alt="Guru BK">
                             <h5>Guru BK</h5>
                         </div>
                     </a>

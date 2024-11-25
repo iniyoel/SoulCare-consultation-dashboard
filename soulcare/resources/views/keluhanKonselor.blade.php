@@ -87,11 +87,11 @@
 <body>
     <nav class="navbar navbar-custom d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
-            <img src="Resource/Logo.png" alt="Logo" style="width: 15%; margin-right: 10px;">
+            <img src="{{ asset('Resource/Logo.png') }}" alt="Logo" style="width: 15%; margin-right: 10px;">
             <p style="font-weight: 500; font-size: 35px;">SoulCare</p>
         </div>
         <div>
-            <a href="LandingPage.html" class="mr-5">Logout</a>
+            <a href="{{ url('/Awal') }}" class="mr-5">Logout</a>
         </div>
     </nav>
     <div class="container-fluid mt-4">
@@ -99,22 +99,22 @@
             <div class="col-md-2">
                 <div class="sidebar">
                     <h1 style="font-weight: 600;">Konselor</h1>
-                    <img src="Resource/profile.png" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
+                    <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
                     <h5>Nama Konselor</h5>
                     <p style="color: red;">Kelas</p>
-                    <a href="JurnalKonseling.html" class="btn">Jurnal</a>
-                    <a href="riwayatKonseling.html" class="btn">Riwayat</a>
-                    <a href="materiKonseling.html" class="btn">Materi</a>
-                    <a href="keluhanKonselor.html" class="btn">Keluhan</a>
+                    <a href="{{ url('/Jurnal-Konseling') }}" class="btn">Jurnal</a>
+                    <a href="{{ url('/Riwayat-Konseling') }}" class="btn">Riwayat</a>
+                    <a href="{{ url('/Materi-Konseling') }}" class="btn">Materi</a>
+                    <a href="{{ url('/Keluhan-Konseling') }}" class="btn">Keluhan</a>
                 </div>
             </div>
 
             <!-- Main Content -->
             <div class="col-md-10 mb-3" >
                 <div class="content">
-                    <img src="Resource/Rantai.png" class="spiral" alt="Jilid Spiral">
+                    <img src="{{ asset('Resource/Rantai.png') }}" class="spiral" alt="Jilid Spiral">
                     <h2 style="font-weight: 700;">Keluhan Konselor</h2>
-                    <form>                
+                    <form>
                         <div class="form-group mt-4 d-flex align-items-center">
                             <label for="tanggalKonseling" class="mr-3" style="flex: 1; font-weight: bold;">Tanggal</label>
                             <div style="flex: 2;">
@@ -140,7 +140,7 @@
                             <div style="flex: 2;">
                                 <textarea id="deskripsiMasalah" class="form-control" rows="7" required></textarea>
                             </div>
-                        </div>                
+                        </div>
                         <div class="form-group mt-4 d-flex justify-content-end">
                             <button type="submit" class="btn btn-save">Simpan</button>
                         </div>
