@@ -18,14 +18,26 @@
             color: white;
             padding: 30px 15px;
         }
+
         .navbar-custom h4 {
             margin: 0;
             color: white;
         }
+
         .navbar-custom a {
-            color: white;
+            color: black;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 30px;
         }
+
+        /* Logout icon */
+        .navbar-custom a img {
+            width: 45px;
+            margin-left: 10px;
+        }
+
         .sidebar {
             background-color: white;
             padding: 20px;
@@ -46,7 +58,7 @@
             padding-left: 15px;
         }
 
-        .sidebar .btn:hover{
+        .sidebar .btn:hover {
             background-color: #254c66;
             font-weight: 500;
         }
@@ -58,18 +70,22 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             position: relative;
         }
+
         .spiral {
             position: absolute;
             left: -20px;
             top: 20px;
             height: 95%;
         }
+
         .form-group label {
             font-weight: bold;
         }
+
         .form-control {
             border-radius: 5px;
         }
+
         .btn-save {
             background-color: #406882;
             color: white;
@@ -77,8 +93,16 @@
             padding: 10px 30px;
             border: none;
         }
+
         .btn-save:hover {
             background-color: #325467;
+        }
+
+        /* Garis dekoratif di kiri */
+        .garis {
+            width: 55px;
+            height: auto;
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -90,7 +114,9 @@
             <p style="font-weight: 500; font-size: 35px;">SoulCare</p>
         </div>
         <div>
-            <a href="{{ url('/') }}" class="mr-5">Logout</a>
+            <a href="{{ url('/') }}" class="mr-5">
+                Logout <img src="{{ asset('Resource/Logout.png') }}" alt="Logout Icon">
+            </a>
         </div>
     </nav>
     <div class="container-fluid mt-4">
@@ -108,20 +134,28 @@
                 </div>
             </div>
 
-            <!-- Main Content -->
+            <!-- Content Area -->
             <div class="col-md-10 mb-3">
                 <div class="content">
-                    <img src="{{ asset('Resource/Rantai.png') }}" class="spiral" alt="Jilid Spiral">
-                    <h2 style="font-weight: 700;">Jurnal Konseling</h2>
+                    <!-- Rantai Spiral Image -->
+                    <img src="{{ asset('Resource/Rantai.svg') }}" class="spiral" alt="Jilid Spiral">
+
+                    <!-- Title with Garis3 Image -->
+                    <h2 class="judul-konseling">
+                        <img src="{{ asset('Resource/garis3.png') }}" alt="Garis3" class="garis">
+                        Jurnal Konseling
+                    </h2>
+
+                    <!-- Form Elements -->
                     <form>
                         <div class="form-group mt-4 d-flex align-items-center">
                             <label for="namaSiswa" class="mr-3" style="flex: 1; font-weight: bold;">Nama Siswa</label>
                             <div style="flex: 2;">
                                 <input type="text" id="namaSiswa" class="form-control" list="namaSiswaList" placeholder="Ketik atau pilih nama siswa" required>
                                 <datalist id="namaSiswaList">
-                                    <option value="Siswa 1"></option>
-                                    <option value="Siswa 2"></option>
-                                    <option value="Siswa 3"></option>
+                                    @foreach ($students as $student)
+                                        <option value="{{ $student->nama }}"></option>
+                                    @endforeach
                                 </datalist>
                             </div>
                         </div>

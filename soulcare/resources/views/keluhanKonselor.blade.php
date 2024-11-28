@@ -10,7 +10,7 @@
     <style>
         body {
             background-color: #e2f0f9;
-            font-family: "poppins";
+            font-family: "poppins", sans-serif;
         }
 
         .navbar-custom {
@@ -18,14 +18,26 @@
             color: white;
             padding: 30px 15px;
         }
+
         .navbar-custom h4 {
             margin: 0;
             color: white;
         }
+
         .navbar-custom a {
-            color: white;
+            color: black;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 30px;
         }
+
+        /* Logout icon */
+        .navbar-custom a img {
+            width: 45px;
+            margin-left: 10px;
+        }
+
         .sidebar {
             background-color: white;
             padding: 20px;
@@ -46,7 +58,7 @@
             padding-left: 15px;
         }
 
-        .sidebar .btn:hover{
+        .sidebar .btn:hover {
             background-color: #254c66;
             font-weight: 500;
         }
@@ -57,20 +69,23 @@
             padding: 30px 50px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             position: relative;
-            /* min-height: 65vh; */
         }
+
         .spiral {
             position: absolute;
             left: -20px;
             top: 20px;
             height: 95%;
         }
+
         .form-group label {
             font-weight: bold;
         }
+
         .form-control {
             border-radius: 5px;
         }
+
         .btn-save {
             background-color: #406882;
             color: white;
@@ -78,8 +93,16 @@
             padding: 10px 30px;
             border: none;
         }
+
         .btn-save:hover {
             background-color: #325467;
+        }
+
+        /* Garis dekoratif di kiri */
+        .garis {
+            width: 55px;
+            height: auto;
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -91,14 +114,16 @@
             <p style="font-weight: 500; font-size: 35px;">SoulCare</p>
         </div>
         <div>
-            <a href="{{ url('/') }}" class="mr-5">Logout</a>
+            <a href="{{ url('/') }}" class="mr-5">
+                Logout <img src="{{ asset('Resource/Logout.png') }}" alt="Logout Icon">
+            </a>
         </div>
     </nav>
     <div class="container-fluid mt-4">
         <div class="row">
             <div class="col-md-2">
                 <div class="sidebar">
-                    <h1 style="font-weight: 600;">Konselor</h1>
+                    <h1>Konselor</h1>
                     <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
                     <h5>Nama Konselor</h5>
                     <p style="color: red;">Kelas</p>
@@ -110,10 +135,17 @@
             </div>
 
             <!-- Main Content -->
-            <div class="col-md-10 mb-3" >
+            <div class="col-md-10 mb-3">
                 <div class="content">
-                    <img src="{{ asset('Resource/Rantai.png') }}" class="spiral" alt="Jilid Spiral">
-                    <h2 style="font-weight: 700;">Keluhan Konselor</h2>
+                    <!-- Rantai Spiral Image -->
+                    <img src="{{ asset('Resource/Rantai.svg') }}" class="spiral" alt="Jilid Spiral">
+
+                    <!-- Title with Garis3 Image -->
+                    <h2 class="judul-konseling">
+                        <img src="{{ asset('Resource/garis3.png') }}" alt="Garis3" class="garis">
+                        Keluhan Konselor
+                    </h2>
+
                     <form>
                         <div class="form-group mt-4 d-flex align-items-center">
                             <label for="tanggalKonseling" class="mr-3" style="flex: 1; font-weight: bold;">Tanggal</label>

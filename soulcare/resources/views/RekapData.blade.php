@@ -27,8 +27,17 @@
         }
 
         .navbar-custom a {
-            color: white;
+            color: black;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+        }
+
+        /* Logout icon */
+        .navbar-custom a img {
+            width: 45px;
+            margin-left: 10px;
         }
 
         .sidebar {
@@ -108,6 +117,12 @@
             max-width: 100%;
             margin: 0 auto;
         }
+        /* Garis dekoratif di kiri */
+        .garis {
+            width: 55px;
+            height: auto;
+            margin-right: 10px;
+        }
     </style>
 </head>
 
@@ -118,9 +133,12 @@
             <p style="font-weight: 500; font-size: 35px;">SoulCare</p>
         </div>
         <div>
-            <a href="{{ url('/') }}" class="mr-5">Logout</a>
+            <a href="{{ url('/') }}" class="mr-5">
+                Logout <img src="{{ asset('Resource/Logout.png') }}" alt="Logout Icon">
+            </a>
         </div>
     </nav>
+
     <div class="container-fluid mt-4">
         <div class="row">
             <div class="col-md-2">
@@ -145,8 +163,11 @@
             <!-- Main Content -->
             <div class="col-md-10 mb-3">
                 <div class="content">
-                    <img src="{{ asset('Resource/Rantai.png') }}" class="spiral" alt="Jilid Spiral">
-                    <h2 style="font-weight: 700;">Rekap Data Konseling</h2>
+                    <img src="{{ asset('Resource/Rantai.svg') }}" class="spiral" alt="Jilid Spiral">
+                    <h2 class="judul-konseling">
+                        <img src="{{ asset('Resource/garis3BK.png') }}" alt="Garis3BK" class="garis">
+                        Rekap Data Konseling
+                    </h2>
                     <h4 style="font-weight: 700;">Persebaran Masalah Siswa Secara Keseluruhan</h4>
 
                     <div class="dropdowns">
@@ -224,7 +245,6 @@
             plugins: [ChartDataLabels]
         });
     </script>
-
 
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

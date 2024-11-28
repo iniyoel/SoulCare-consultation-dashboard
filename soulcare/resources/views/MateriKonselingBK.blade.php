@@ -25,8 +25,17 @@
         }
 
         .navbar-custom a {
-            color: white;
+            color: black;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+        }
+
+        /* Logout icon */
+        .navbar-custom a img {
+            width: 45px;
+            margin-left: 10px;
         }
 
         .sidebar {
@@ -101,6 +110,18 @@
             max-width: 600px;
             margin: 0 auto;
         }
+
+        h2.judul-konseling {
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        h2.judul-konseling img {
+            margin-right: 15px;
+            width: 55px; /* Adjust the image size */
+        }
+
     </style>
 </head>
 
@@ -111,9 +132,12 @@
             <p style="font-weight: 500; font-size: 35px;">SoulCare</p>
         </div>
         <div>
-            <a href="{{ url('/') }}" class="mr-5">Logout</a>
+            <a href="{{ url('/') }}" class="mr-5">
+                Logout <img src="{{ asset('Resource/Logout.png') }}" alt="Logout Icon">
+            </a>
         </div>
     </nav>
+
     <div class="container-fluid mt-4">
         <div class="row">
             <div class="col-md-2">
@@ -138,8 +162,11 @@
             <!-- Main Content -->
             <div class="col-md-10 mb-3">
                 <div class="content">
-                    <img src="{{ asset('Resource/Rantai.png') }}" class="spiral" alt="Jilid Spiral">
-                    <h2 style="font-weight: 700;">Materi Konseling</h2>
+                    <img src="{{ asset('Resource/Rantai.svg') }}" class="spiral" alt="Jilid Spiral">
+                    <h2 class="judul-konseling">
+                        <img src="{{ asset('Resource/garis3BK.png') }}" alt="Garis3BK" class="garis">
+                        Materi Konseling
+                    </h2>
 
                     <!-- Materi Konseling -->
                     <div class="mt-4">
@@ -156,7 +183,6 @@
                             <div style="flex: 3;">
                                 <h5 style="font-weight: bold;">Cara menjadi pendengar yang baik</h5>
                                 <p><a href="files/MenjadiPendengarBaik.pdf" download class="text-danger">Menjadi pendengar yang baik.pdf</a></p>
-
                             </div>
                         </div>
 
@@ -173,7 +199,6 @@
                             <div style="flex: 3;">
                                 <h5 style="font-weight: bold;">Apa, Sih, Konseling Sebaya Itu?</h5>
                                 <p><a href="files/KonselingSebaya.pdf" download class="text-danger">Konseling Sebaya.pdf</a></p>
-
                             </div>
                         </div>
                     </div>
@@ -193,7 +218,6 @@
                     window.location.href = "halamanBerikutnya.html";
                 }
             </script>
-
         </div>
     </div>
 

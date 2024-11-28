@@ -119,7 +119,7 @@
             <!-- Main Content -->
             <div class="col-md-10 mb-3">
                 <div class="content">
-                    <img src="Resource/Rantai.png" class="spiral" alt="Jilid Spiral">
+                    <img src="{{ asset('Resource/Rantai.svg') }}" class="spiral" alt="Jilid Spiral">
 
                     <!-- Deskripsi Masalah -->
                     <div class="form-group mt-4">

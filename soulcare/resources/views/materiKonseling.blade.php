@@ -25,8 +25,11 @@
         }
 
         .navbar-custom a {
-            color: white;
+            color: black;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 30px;
         }
 
         .sidebar {
@@ -88,6 +91,24 @@
         .btn-save:hover {
             background-color: #325467;
         }
+
+        /* Styling for Garis3 Image */
+        .garis {
+            width: 55px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        /* Adjust navbar layout to place the logout icon to the right of the text */
+        .navbar-custom .logout-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-custom .logout-container a {
+            margin-left: 10px;
+        }
+
     </style>
 </head>
 
@@ -97,8 +118,10 @@
             <img src="{{ asset('Resource/Logo.png') }}" alt="Logo" style="width: 15%; margin-right: 10px;">
             <p style="font-weight: 500; font-size: 35px;">SoulCare</p>
         </div>
-        <div>
-            <a href="{{ url('/') }}" class="mr-5">Logout</a>
+        <div class="logout-container">
+            <a href="{{ url('/') }}" class="mr-5">
+                Logout <img src="{{ asset('Resource/Logout.png') }}" alt="Logout Icon" style="width: 45px; margin-left: 10px;">
+            </a>
         </div>
     </nav>
     <div class="container-fluid mt-4">
@@ -119,8 +142,11 @@
             <!-- Main Content -->
             <div class="col-md-10 mb-3">
                 <div class="content">
-                    <img src="{{ asset('Resource/Rantai.png') }}" class="spiral" alt="Jilid Spiral">
-                    <h2 style="font-weight: 700;">Materi Konseling</h2>
+                    <img src="{{ asset('Resource/Rantai.svg') }}" class="spiral" alt="Jilid Spiral">
+                    <h2 style="font-weight: 700; display: flex; align-items: center;">
+                        <img src="{{ asset('Resource/garis3.png') }}" alt="Garis3" class="garis">
+                        Materi Konseling
+                    </h2>
 
                     <!-- Materi Konseling -->
                     <div class="mt-4">

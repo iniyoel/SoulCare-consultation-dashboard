@@ -27,8 +27,23 @@
         }
 
         .navbar-custom a {
-            color: white;
+            color: black;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+        }
+
+        /* Logout icon */
+        .navbar-custom a img {
+            width: 45px;
+            margin-left: 10px;
+        }
+        /* Garis dekoratif di kiri */
+        .garis {
+            width: 55px;
+            height: auto;
+            margin-right: 10px;
         }
 
         .sidebar {
@@ -78,6 +93,8 @@
             left: -20px;
             top: 20px;
             height: 95%;
+            width: 60px;
+            object-fit: cover;
         }
 
         .dropdowns {
@@ -108,60 +125,6 @@
             max-width: 100%;
             margin: 0 auto;
         }
-        /* Header Tabel */
-    .table-container .table thead {
-        background-color: #2169AC; /* Warna biru */
-        color: white; /* Teks putih */
-    }
-
-    /* Baris Tabel */
-    .table-container .table tbody tr:nth-child(even) {
-        background-color: #EAF3FA; /* Biru muda untuk baris genap */
-    }
-
-    .table-container .table tbody tr:nth-child(odd) {
-        background-color: white; /* Putih untuk baris ganjil */
-    }
-
-    /* Tombol "Detail" */
-    .table-container .table tbody td a.btn-info {
-        background-color: #2169AC; /* Warna biru */
-        color: white;
-        border: none;
-    }
-
-    .table-container .table tbody td a.btn-info:hover {
-        background-color: #194F7D; /* Warna lebih gelap saat hover */
-    }
-
-    /* Label Warna untuk Jenis Masalah */
-    .label {
-        padding: 5px 10px;
-        border-radius: 20px;
-        font-weight: bold;
-        color: white;
-        display: inline-block;
-    }
-
-    .label.karir {
-        background-color: #FFD700; /* Emas untuk Karir */
-    }
-
-    .label.belajar {
-        background-color: #4BC0C0; /* Biru Muda untuk Belajar */
-    }
-
-    .label.pribadi {
-        background-color: #FF6384; /* Merah untuk Pribadi */
-    }
-
-    .label.sosial {
-        background-color: #36A2EB; /* Biru untuk Sosial */
-    }
-
-    .label.lainnya {
-        background-color: #9966FF; /* Ungu untuk Lainnya */
-    }
 
     </style>
 </head>
@@ -173,9 +136,12 @@
             <p style="font-weight: 500; font-size: 35px;">SoulCare</p>
         </div>
         <div>
-            <a href="{{ url('/') }}" class="mr-5">Logout</a>
+            <a href="{{ url('/') }}" class="mr-5">
+                Logout <img src="{{ asset('Resource/Logout.png') }}" alt="Logout Icon">
+            </a>
         </div>
     </nav>
+
     <div class="container-fluid mt-4">
         <div class="row">
             <div class="col-md-2">
@@ -200,8 +166,11 @@
             <!-- Main Content -->
             <div class="col-md-10 mb-3">
                 <div class="content">
-                    <img src="{{ asset('Resource/Rantai.png') }}" class="spiral" alt="Jilid Spiral">
-                    <h2 style="font-weight: 700;">Rekap Data Konseling</h2>
+                    <img src="{{ url('/Resource/Rantai.svg') }}" class="spiral" alt="Jilid Spiral">
+                    <h2 class="judul-konseling">
+                        <img src="{{ asset('Resource/garis3BK.png') }}" alt="Garis3BK" class="garis">
+                        Rekap Data Konseling
+                    </h2>
                     <h4 style="font-weight: 700;">Persebaran Masalah Siswa Secara Keseluruhan</h4>
 
                     <div class="dropdowns">
@@ -273,7 +242,7 @@
                                     <td>Niall Horan</td>
                                     <td>L</td>
                                     <td><span class="label karir">Karir</span></td>
-                                    <td><a href="#" class="btn btn-info btn-sm">Detail</a></td>
+                                    <td><a href="{{ url('/Detail-KonselingBK') }}" class="btn btn-info btn-sm">Detail</a></td>
                                     <td>Ya</td>
                                 </tr>
                                 <tr>
@@ -283,7 +252,7 @@
                                     <td>Lady Gaga</td>
                                     <td>P</td>
                                     <td><span class="label belajar">Belajar</span></td>
-                                    <td><a href="DetailKonselingBK.html" class="btn btn-info btn-sm">Detail</a></td>
+                                    <td><a href="{{ url('/Detail-KonselingBK') }}" class="btn btn-info btn-sm">Detail</a></td>
                                     <td>Tidak</td>
                                 </tr>
                             </tbody>

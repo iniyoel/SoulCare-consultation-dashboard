@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JurnalKonselingController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +21,23 @@ Route::get('/', function () {
 });
 
 Route::get('/login', function () {
+<<<<<<< HEAD
+    return view('login'); // Menampilkan form login
+});
+
+Route::post('/login', [AuthController::class, 'login']); // Proses login
+
+// Halaman tujuan setelah login
+Route::get('/Jurnal-Konseling', function () {
+    return view('JurnalKonseling'); // Ganti dengan view yang sesuai
+})->name('JurnalKonseling');
+
+Route::get('/Rekap-Data', function () {
+    return view('RekapData'); // Ganti dengan view yang sesuai
+})->name('RekapData');
+
+
+=======
     return view('Login');
 });
 
@@ -36,6 +55,7 @@ Route::post('/login', function () {
     }
 });
 
+>>>>>>> 335ac3225b71ffa37d886ad93d28e54f77df9586
 //Halaman Konselor
 Route::get('/Jurnal-Konseling', function () {
     return view('JurnalKonseling');
@@ -86,6 +106,12 @@ Route::get('/Keluhan-BK', function () {
     return view('KeluhanBK');
 });
 
-Route::get('/Detail-Konseling', function () {
+Route::get('/Detail-KonselingBK', function () {
     return view('DetailKonselingBK');
 });
+
+
+//Controller
+
+// Route untuk menampilkan form Jurnal Konseling
+Route::get('/Jurnal-Konseling', [JurnalKonselingController::class, 'index']);

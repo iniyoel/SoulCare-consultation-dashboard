@@ -23,8 +23,17 @@
             color: white;
         }
         .navbar-custom a {
-            color: white;
+            color: black;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+        }
+
+        /* Logout icon */
+        .navbar-custom a img {
+            width: 45px;
+            margin-left: 10px;
         }
         .sidebar {
             background-color: white;
@@ -112,7 +121,9 @@
             <p style="font-weight: 500; font-size: 35px;">SoulCare</p>
         </div>
         <div>
-            <a href="{{ url('/') }}" class="mr-5">Logout</a>
+            <a href="{{ url('/') }}" class="mr-5">
+                Logout <img src="{{ asset('Resource/Logout.png') }}" alt="Logout Icon">
+            </a>
         </div>
     </nav>
     <div class="container-fluid mt-4">
@@ -123,16 +134,16 @@
                     <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
                     <h5>Nama</h5>
                     <div class="menu-dropdown">
-                        <a href="RekapData.html" class="btn">Rekap Data</a>
+                        <a href="{{ url('/Rekap-Data') }}" class="btn">Rekap Data</a>
                         <div class="dropdown-submenu">
-                            <a href="kelas7.html" class="d-block">Kelas 7</a>
-                            <a href="kelas8.html" class="d-block">Kelas 8</a>
-                            <a href="kelas9.html" class="d-block">Kelas 9</a>
+                            <a href="{{ url('/Rekap-Data/Kelas7') }}" class="d-block">Kelas 7</a>
+                            <a href="{{ url('/Rekap-Data/Kelas8') }}" class="d-block">Kelas 8</a>
+                            <a href="{{ url('/Rekap-Data/Kelas9') }}" class="d-block">Kelas 9</a>
                         </div>
                     </div>
-                    <a href="MateriKonselingBK.html" class="btn">Materi</a>
-                    <a href="UploadMateri.html" class="btn">Upload Materi</a>
-                    <a href="KeluhanBK.html" class="btn">Keluhan</a>
+                    <a href="{{ url('/Materi-KonselingBK') }}" class="btn">Materi</a>
+                    <a href="{{ url('/Upload-Materi') }}" class="btn">Upload Materi</a>
+                    <a href="{{ url('/Keluhan-BK') }}" class="btn">Keluhan</a>
                 </div>
             </div>
 

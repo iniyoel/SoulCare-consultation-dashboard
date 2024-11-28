@@ -27,8 +27,23 @@
         }
 
         .navbar-custom a {
-            color: white;
+            color: black;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+        }
+
+        /* Logout icon */
+        .navbar-custom a img {
+            width: 45px;
+            margin-left: 10px;
+        }
+        /* Garis dekoratif di kiri */
+        .garis {
+            width: 55px;
+            height: auto;
+            margin-right: 10px;
         }
 
         .sidebar {
@@ -136,7 +151,9 @@
             <p style="font-weight: 500; font-size: 35px;">SoulCare</p>
         </div>
         <div>
-            <a href="{{ url('/') }}" class="mr-5">Logout</a>
+            <a href="{{ url('/') }}" class="mr-5">
+                Logout <img src="{{ asset('Resource/Logout.png') }}" alt="Logout Icon">
+            </a>
         </div>
     </nav>
     <div class="container-fluid mt-4">
@@ -164,7 +181,10 @@
             <div class="col-md-10 mb-3">
                 <div class="content">
                     <img src="{{ asset('Resource/Rantai.png') }}" class="spiral" alt="Jilid Spiral">
-                    <h2 style="font-weight: 700;">Keluhan Konselor</h2>
+                    <h2 class="judul-konseling">
+                        <img src="{{ asset('Resource/garis3BK.png') }}" alt="Garis3BK" class="garis">
+                        Keluhan Konselor
+                    </h2>
                     <div class="row">
                         <!-- Diagram Pie -->
                         <div class="col-md-5">
