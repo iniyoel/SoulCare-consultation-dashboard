@@ -89,14 +89,8 @@
     <div class="text-center">
         <img src="{{ asset('Resource/Logo.png') }}" alt="SoulCare Logo" class="logo"> <!-- Pastikan path gambar benar -->
         <div class="login-card">
-<<<<<<< HEAD
-            <h3>Login</h3>
+            <!-- FORM LOGIN -->
             <form method="POST" action="{{ url('/login') }}">
-                @csrf
-                <input type="email" name="email" class="form-control" placeholder="Email" required>
-                <input type="password" name="password" class="form-control" placeholder="Password" required>
-=======
-            <form method="POST" action="{{ url('/login') }}"> <!-- Rute POST ke /login -->
                 @csrf <!-- Token CSRF Laravel untuk keamanan -->
                 <div class="form-group">
                     <input type="text" name="username" class="form-control" placeholder="Username" required>
@@ -104,7 +98,6 @@
                 <div class="form-group">
                     <input type="password" name="password" class="form-control" placeholder="Password" required>
                 </div>
->>>>>>> 335ac3225b71ffa37d886ad93d28e54f77df9586
                 <button type="submit" class="btn btn-login">Login</button>
             </form>
             @if ($errors->any())
