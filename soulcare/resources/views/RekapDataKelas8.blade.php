@@ -95,6 +95,7 @@
             height: 95%;
             width: 60px;
             object-fit: cover;
+            max-width: auto;
         }
 
         .dropdowns {
