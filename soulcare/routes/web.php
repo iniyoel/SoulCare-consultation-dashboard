@@ -21,7 +21,6 @@ Route::get('/', function () {
 });
 
 Route::get('/login', function () {
-<<<<<<< HEAD
     return view('login'); // Menampilkan form login
 });
 
@@ -37,25 +36,6 @@ Route::get('/Rekap-Data', function () {
 })->name('RekapData');
 
 
-=======
-    return view('Login');
-});
-
-Route::post('/login', function () {
-    $username = request('username');
-    $password = request('password');
-
-    // Logika login sederhana
-    if ($username === 'guru' && $password === 'password') {
-        return redirect('/Rekap-Data'); // Guru diarahkan ke Rekap Data
-    } elseif ($username === 'konselor' && $password === 'password') {
-        return redirect('/Jurnal-Konseling'); // Konselor diarahkan ke Jurnal Konseling
-    } else {
-        return redirect()->back()->withErrors(['Invalid credentials']); // Login gagal
-    }
-});
-
->>>>>>> 335ac3225b71ffa37d886ad93d28e54f77df9586
 //Halaman Konselor
 Route::get('/Jurnal-Konseling', function () {
     return view('JurnalKonseling');
