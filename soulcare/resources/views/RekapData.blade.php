@@ -172,9 +172,9 @@
                     <a href="{{ url('/Rekap-Data') }}" class="btn">Rekap Data</a>
                     <div class="menu-dropdown">
                         <div class="dropdown-submenu">
-                            <a href="{{ url('/Rekap-Data/Kelas7') }}" class="d-block">Kelas 7</a>
-                            <a href="{{ url('/Rekap-Data/Kelas8') }}" class="d-block">Kelas 8</a>
-                            <a href="{{ url('/Rekap-Data/Kelas9') }}" class="d-block">Kelas 9</a>
+                            <a href="{{ url('/Rekap-DataKelas7') }}" class="d-block">Kelas 7</a>
+                            <a href="{{ url('/Rekap-DataKelas8') }}" class="d-block">Kelas 8</a>
+                            <a href="{{ url('/Rekap-DataKelas9') }}" class="d-block">Kelas 9</a>
                         </div>
                     </div>
                     <a href="{{ url('/Materi-KonselingBK') }}" class="btn">Materi</a>
@@ -212,7 +212,7 @@
                         </div>
                     </div>
                     <div class="chart-container mt-4">
-                        <canvas id="pieChart" width="300vh" height="300vh"></canvas>
+                        <canvas id="pieChart" width="400vh" height="400vh"></canvas>
                     </div>
                 </div>
             </div>
@@ -260,7 +260,7 @@
                     padding: {
                         top: 50,
                         bottom: 50,
-                        left: 50,
+                        left: 60,
                         right: 50
                     }
                 }

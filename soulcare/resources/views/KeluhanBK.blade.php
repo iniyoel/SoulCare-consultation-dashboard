@@ -10,6 +10,14 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script> <!-- Plugin datalabels -->
     <style>
+        @font-face {
+            font-family: 'LazyDog';
+            src: url('assets/fonts/Lazydog.woff2') format('woff2'),
+                 url('assets/fonts/Lazydog.woff') format('woff'),
+                 url('assets/fonts/Lazydog.eot') format('eot');
+            font-weight: normal;
+            font-style: normal;
+        }
         body {
             background-color: #e2f0f9;
             font-family: "poppins";
@@ -159,7 +167,7 @@
     <nav class="navbar navbar-custom d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
             <img src="{{ asset('Resource/Logo.png') }}" alt="Logo" style="width: 15%; margin-right: 10px;">
-            <p style="font-weight: 500; font-size: 35px;">SoulCare</p>
+            <p style="font-weight: 500; font-size: 35px;  font-family: 'LazyDog', sans-serif;">SoulCare</p>
         </div>
         <div>
             <a href="{{ url('/') }}" class="mr-5">
@@ -183,9 +191,9 @@
                     <a href="{{ url('/Rekap-Data') }}" class="btn">Rekap Data</a>
                     <div class="menu-dropdown">
                         <div class="dropdown-submenu">
-                            <a href="{{ url('/Rekap-Data/Kelas7') }}" class="d-block">Kelas 7</a>
-                            <a href="{{ url('/Rekap-Data/Kelas8') }}" class="d-block">Kelas 8</a>
-                            <a href="{{ url('/Rekap-Data/Kelas9') }}" class="d-block">Kelas 9</a>
+                            <a href="{{ url('/Rekap-DataKelas7') }}" class="d-block">Kelas 7</a>
+                            <a href="{{ url('/Rekap-DataKelas8') }}" class="d-block">Kelas 8</a>
+                            <a href="{{ url('/Rekap-DataKelas9') }}" class="d-block">Kelas 9</a>
                         </div>
                     </div>
                     <a href="{{ url('/Materi-KonselingBK') }}" class="btn">Materi</a>

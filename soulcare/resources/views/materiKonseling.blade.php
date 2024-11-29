@@ -8,6 +8,14 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'LazyDog';
+            src: url('assets/fonts/Lazydog.woff2') format('woff2'),
+                 url('assets/fonts/Lazydog.woff') format('woff'),
+                 url('assets/fonts/Lazydog.eot') format('eot');
+            font-weight: normal;
+            font-style: normal;
+        }
         body {
             background-color: #e2f0f9;
             font-family: "poppins";
@@ -127,7 +135,7 @@
     <nav class="navbar navbar-custom d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
             <img src="{{ asset('Resource/Logo.png') }}" alt="Logo" style="width: 15%; margin-right: 10px;">
-            <p style="font-weight: 500; font-size: 35px;">SoulCare</p>
+            <p style="font-weight: 500; font-size: 35px;  font-family: 'LazyDog', sans-serif;">SoulCare</p>
         </div>
         <div class="logout-container">
             <a href="{{ url('/') }}" class="mr-5">

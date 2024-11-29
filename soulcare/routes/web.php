@@ -65,15 +65,15 @@ Route::get('/Rekap-Data', function () {
     return view('RekapData');
 });
 
-Route::get('/Rekap-Data/Kelas7', function () {
+Route::get('/Rekap-DataKelas7', function () {
     return view('RekapDataKelas7');
 });
 
-Route::get('/Rekap-Data/Kelas8', function () {
+Route::get('/Rekap-DataKelas8', function () {
     return view('RekapDataKelas8');
 });
 
-Route::get('/Rekap-Data/Kelas9', function () {
+Route::get('/Rekap-DataKelas9', function () {
     return view('RekapDataKelas9');
 });
 
