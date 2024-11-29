@@ -44,6 +44,17 @@
             border-radius: 21px;
             height: max-content;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center the items horizontally */
+        }
+
+        .edit-icon {
+            width: 30px;
+            height: 30px;
+            margin-top: 10px; /* Add some space between the profile picture and the edit icon */
+            cursor: pointer;
+
         }
 
         .sidebar .btn {
@@ -124,7 +135,13 @@
             <div class="col-md-2">
                 <div class="sidebar">
                     <h1>Konselor</h1>
-                    <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
+                    <!-- Gambar Profil -->
+                    <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle " style="width: 80px;">
+
+                    <!-- Gambar Edit (Ganti Password) di bawah logo profil -->
+                    <a href="{{ url('/Ganti-Password') }}">
+                        <img src="{{ asset('Resource/Edit.png') }}" alt="Edit Password" class="edit-icon mb-3" style="width: 20px; height:20px;">
+                    </a>
                     <h5>Nama Konselor</h5>
                     <p style="color: red;">Kelas</p>
                     <a href="{{ url('/Jurnal-Konseling') }}" class="btn">Jurnal</a>

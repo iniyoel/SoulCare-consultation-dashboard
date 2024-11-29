@@ -10,9 +10,18 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script> <!-- Plugin datalabels -->
     <style>
+        @font-face {
+            font-family: 'LazyDog';
+            src: url('assets/fonts/Lazydog.woff2') format('woff2'),
+                 url('assets/fonts/Lazydog.woff') format('woff'),
+                 url('assets/fonts/Lazydog.eot') format('eot');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         body {
             background-color: #e2f0f9;
-            font-family: "poppins";
+            font-family: "poppins"; /* Gunakan font default untuk body */
         }
 
         .navbar-custom {
@@ -40,12 +49,24 @@
             margin-left: 10px;
         }
 
+
         .sidebar {
             background-color: white;
             padding: 20px;
             border-radius: 21px;
             height: max-content;
             text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1; /* Make the sidebar flexible */
+        }
+        .edit-icon {
+            width: 30px;
+            height: 30px;
+            margin-top: 10px; /* Add some space between the profile picture and the edit icon */
+            cursor: pointer;
+
         }
 
         .sidebar .btn {
@@ -108,10 +129,6 @@
             font-size: 16px;
         }
 
-        .chart-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
 
         #pieChart {
             max-width: 100%;
@@ -130,9 +147,9 @@
     <nav class="navbar navbar-custom d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
             <img src="{{ asset('Resource/Logo.png') }}" alt="Logo" style="width: 15%; margin-right: 10px;">
-            <p style="font-weight: 500; font-size: 35px;">SoulCare</p>
+            <p style="font-weight: 500; font-size: 35px;  font-family: 'LazyDog', sans-serif;">SoulCare</p>
         </div>
-        <div>
+        <div class="logout-container">
             <a href="{{ url('/') }}" class="mr-5">
                 Logout <img src="{{ asset('Resource/Logout.png') }}" alt="Logout Icon">
             </a>
@@ -144,10 +161,16 @@
             <div class="col-md-2">
                 <div class="sidebar">
                     <h1 style="font-weight: 600;">Guru BK</h1>
-                    <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
+                    <!-- Gambar Profil -->
+                    <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle " style="width: 80px;">
+
+                    <!-- Gambar Edit (Ganti Password) di bawah logo profil -->
+                    <a href="{{ url('/Ganti-Password') }}">
+                        <img src="{{ asset('Resource/Edit.png') }}" alt="Edit Password" class="edit-icon mb-3" style="width: 20px; height:20px;">
+                    </a>
                     <h5>Nama</h5>
+                    <a href="{{ url('/Rekap-Data') }}" class="btn">Rekap Data</a>
                     <div class="menu-dropdown">
-                        <a href="{{ url('/Rekap-Data') }}" class="btn">Rekap Data</a>
                         <div class="dropdown-submenu">
                             <a href="{{ url('/Rekap-Data/Kelas7') }}" class="d-block">Kelas 7</a>
                             <a href="{{ url('/Rekap-Data/Kelas8') }}" class="d-block">Kelas 8</a>
@@ -189,7 +212,7 @@
                         </div>
                     </div>
                     <div class="chart-container mt-4">
-                        <canvas id="pieChart" width="600" height="600"></canvas>
+                        <canvas id="pieChart" width="300vh" height="300vh"></canvas>
                     </div>
                 </div>
             </div>

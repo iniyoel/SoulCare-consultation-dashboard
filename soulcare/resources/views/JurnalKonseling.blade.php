@@ -44,7 +44,19 @@
             border-radius: 21px;
             height: max-content;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center the items horizontally */
         }
+
+        .edit-icon {
+            width: 30px;
+            height: 30px;
+            margin-top: 10px; /* Add some space between the profile picture and the edit icon */
+            cursor: pointer;
+
+        }
+
 
         .sidebar .btn {
             display: block;
@@ -104,6 +116,14 @@
             height: auto;
             margin-right: 10px;
         }
+
+        /* Edit icon styling */
+        .edit-icon {
+            margin-top: 10px;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+        }
     </style>
 </head>
 
@@ -124,15 +144,27 @@
             <div class="col-md-2">
                 <div class="sidebar">
                     <h1>Konselor</h1>
-                    <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
+
+                    <!-- Gambar Profil -->
+                    <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle " style="width: 80px;">
+
+                    <!-- Gambar Edit (Ganti Password) di bawah logo profil -->
+                    <a href="{{ url('/Ganti-Password') }}">
+                        <img src="{{ asset('Resource/Edit.png') }}" alt="Edit Password" class="edit-icon mb-3" style="width: 20px; height:20px;">
+                    </a>
+
                     <h5>Nama Konselor</h5>
                     <p style="color: red;">Kelas</p>
+
+                    <!-- Menu lainnya -->
                     <a href="{{ url('/Jurnal-Konseling') }}" class="btn">Jurnal</a>
                     <a href="{{ url('/Riwayat-Konseling') }}" class="btn">Riwayat</a>
                     <a href="{{ url('/Materi-Konseling') }}" class="btn">Materi</a>
                     <a href="{{ url('/Keluhan-Konseling') }}" class="btn">Keluhan</a>
                 </div>
             </div>
+
+
 
             <!-- Content Area -->
             <div class="col-md-10 mb-3">
@@ -217,12 +249,3 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Bootstrap JS, Popper.js, and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-
-</html>

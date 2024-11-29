@@ -35,6 +35,9 @@ Route::get('/Rekap-Data', function () {
     return view('RekapData'); // Ganti dengan view yang sesuai
 })->name('RekapData');
 
+Route::get('/Ganti-Password', function () {
+    return view('GantiPassword');
+});
 
 //Halaman Konselor
 Route::get('/Jurnal-Konseling', function () {
