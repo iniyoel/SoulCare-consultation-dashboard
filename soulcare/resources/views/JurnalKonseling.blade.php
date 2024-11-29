@@ -82,7 +82,6 @@
         }
 
         .sidebar .btn:hover {
-        .sidebar .btn:hover {
             background-color: #254c66;
             font-weight: 500;
         }
@@ -165,6 +164,10 @@
                 <div class="sidebar">
                     <h1>Konselor</h1>
                     <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
+                    <!-- Gambar Edit (Ganti Password) di bawah logo profil -->
+                    <a href="{{ url('/Ganti-Password') }}">
+                        <img src="{{ asset('Resource/Edit.png') }}" alt="Edit Password" class="edit-icon mb-3" style="width: 20px; height:20px;">
+                    </a>
                     <h5>{{ $user->name }}</h5>
                     <p style="color: red;">{{ $className }}</p>
                     <a href="{{ url('/Jurnal-Konseling') }}" class="btn">Jurnal</a>
@@ -180,7 +183,10 @@
             <div class="col-md-10 mb-3">
                 <div class="content">
                     <img src="{{ asset('Resource/Rantai.png') }}" class="spiral" alt="Jilid Spiral">
-                    <h2 style="font-weight: 700;">Jurnal Konseling</h2>
+                    <h2 style="font-weight: 700; display: flex; align-items: center;">
+                        <img src="{{ asset('Resource/garis3.png') }}" alt="Garis3" class="garis">
+                        Riwayat Konseling
+                    </h2>
                     <!-- Form Jurnal Konseling -->
                     <form action="{{ route('storeCounselingRecord') }}" method="POST">
                         @csrf

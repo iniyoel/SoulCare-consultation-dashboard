@@ -151,6 +151,10 @@
                 <div class="sidebar">
                     <h1 style="font-weight: 600;">Konselor</h1>
                     <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
+                    <!-- Gambar Edit (Ganti Password) di bawah logo profil -->
+                    <a href="{{ url('/Ganti-Password') }}">
+                        <img src="{{ asset('Resource/Edit.png') }}" alt="Edit Password" class="edit-icon mb-3" style="width: 20px; height:20px;">
+                    </a>
                     <h5>{{ $user->name }}</h5>
                     <p style="color: red;">{{ $className }}</p>
                     <a href="{{ url('/Jurnal-Konseling') }}" class="btn">Jurnal</a>

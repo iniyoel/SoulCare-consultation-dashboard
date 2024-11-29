@@ -94,12 +94,15 @@
                 @csrf <!-- Token CSRF Laravel untuk keamanan -->
                 <h2 class="mb-5">Create New Password</h2>
                 <div class="form-group">
-                    <input type="text" name="New-Password" class="form-control" placeholder="New Password" required>
+                    <input type="text" name="Change Username" class="form-control" placeholder="Change Username" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" name="Confirm New-Password" class="form-control" placeholder="Confrim New Password" required>
+                    <input type="password" name="New Password" class="form-control" placeholder="New Password" required>
                 </div>
-                <button type="submit" class="btn btn-login">Change Password</button>
+                <div class="form-group">
+                    <input type="password" name="Confirm New Password" class="form-control" placeholder="Confrim New Password" required>
+                </div>
+                <button type="submit" class="btn btn-login">Change Now</button>
             </form>
             @if ($errors->any())
                 <p style="color: red;">{{ $errors->first() }}</p>

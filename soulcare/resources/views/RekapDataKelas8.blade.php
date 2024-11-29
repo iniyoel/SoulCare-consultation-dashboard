@@ -18,7 +18,10 @@
             font-weight: normal;
             font-style: normal;
         }
-
+        body {
+            background-color: #e2f0f9;
+            font-family: "poppins"; /* Gunakan font default untuk body */
+        }
         .navbar-custom {
             background: linear-gradient(to bottom, #BED7DD 0%, #4B979F 100%);
             color: white;
@@ -161,14 +164,19 @@
         <div class="row">
             <div class="col-md-2">
                 <div class="sidebar">
-                    <h1 style="font-weight: 600;">Guru BK</h1>
+                <h1 style="font-weight: 600;">Guru BK</h1>
                     <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
+                    <!-- Gambar Edit (Ganti Password) di bawah logo profil -->
+                    <a href="{{ url('/Ganti-Password') }}">
+                        <img src="{{ asset('Resource/Edit.png') }}" alt="Edit Password" class="edit-icon mb-3" style="width: 20px; height:20px;">
+                    </a>
                     <h5>{{ $user->name }}</h5>
+                    <a href="{{ url('/Rekap-Data') }}" class="btn">Rekap Data</a>
                     <div class="menu-dropdown">
                         <div class="dropdown-submenu">
-                            <a href="{{ url('/Rekap-Data/Kelas7') }}" class="d-block">Kelas 7</a>
-                            <a href="{{ url('/Rekap-Data/Kelas8') }}" class="d-block">Kelas 8</a>
-                            <a href="{{ url('/Rekap-Data/Kelas9') }}" class="d-block mb-4">Kelas 9</a>
+                            <a href="{{ url('/Rekap-DataKelas7') }}" class="d-block">Kelas 7</a>
+                            <a href="{{ url('/Rekap-DataKelas8') }}" class="d-block">Kelas 8</a>
+                            <a href="{{ url('/Rekap-DataKelas9') }}" class="d-block">Kelas 9</a>
                         </div>
                     </div>
                     <a href="{{ url('/Materi-KonselingBK') }}" class="btn">Materi</a>
@@ -181,7 +189,10 @@
             <div class="col-md-10 mb-3">
                 <div class="content">
                     <img src="{{ url('/Resource/Rantai.png') }}" class="spiral" alt="Jilid Spiral">
-                    <h2 style="font-weight: 700;">Rekap Data Konseling</h2>
+                    <h2 class="judul-konseling">
+                        <img src="{{ asset('Resource/garis3BK.png') }}" alt="Garis3BK" class="garis" style="font-weight: 700;">
+                        Rekap Data Konseling
+                    </h2>
                     <h4 style="font-weight: 700;">Persebaran Masalah Siswa Secara Keseluruhan</h4>
 
                     <form action="{{ route('RekapKelas7') }}" method="GET">
@@ -214,7 +225,7 @@
         <button type="submit" class="btn btn-primary" style="border-radius: 17px; background-color: #93AF4C; border: none;">Tampilkan</button>
     </div>
                     <div class="chart-container mt-4">
-                        <canvas id="pieChart" width="400" height="400"></canvas>
+                        <canvas id="pieChart" width="400vh" height="400vh"></canvas>
                     </div>
 
 

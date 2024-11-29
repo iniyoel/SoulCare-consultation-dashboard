@@ -94,7 +94,7 @@
             height: 95%;
             max-width: 4%;
         }
-        
+
         .form-group label {
             font-weight: bold;
         }
@@ -154,13 +154,17 @@
                 <div class="sidebar">
                     <h1 style="font-weight: 600;">Guru BK</h1>
                     <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
+                    <!-- Gambar Edit (Ganti Password) di bawah logo profil -->
+                    <a href="{{ url('/Ganti-Password') }}">
+                        <img src="{{ asset('Resource/Edit.png') }}" alt="Edit Password" class="edit-icon mb-3" style="width: 20px; height:20px;">
+                    </a>
                     <h5>{{ $user->name }}</h5>
+                    <a href="{{ url('/Rekap-Data') }}" class="btn">Rekap Data</a>
                     <div class="menu-dropdown">
-                        <a href="{{ url('/Rekap-Data') }}" class="btn">Rekap Data</a>
                         <div class="dropdown-submenu">
-                            <a href="{{ url('/Rekap-Data/Kelas7') }}" class="d-block">Kelas 7</a>
-                            <a href="{{ url('/Rekap-Data/Kelas8') }}" class="d-block">Kelas 8</a>
-                            <a href="{{ url('/Rekap-Data/Kelas9') }}" class="d-block mb-3">Kelas 9</a>
+                            <a href="{{ url('/Rekap-DataKelas7') }}" class="d-block">Kelas 7</a>
+                            <a href="{{ url('/Rekap-DataKelas8') }}" class="d-block">Kelas 8</a>
+                            <a href="{{ url('/Rekap-DataKelas9') }}" class="d-block">Kelas 9</a>
                         </div>
                     </div>
                     <a href="{{ url('/Materi-KonselingBK') }}" class="btn">Materi</a>

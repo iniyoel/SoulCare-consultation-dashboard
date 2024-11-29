@@ -183,12 +183,17 @@
                 <div class="sidebar">
                     <h1 style="font-weight: 600;">Guru BK</h1>
                     <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
+                    <!-- Gambar Edit (Ganti Password) di bawah logo profil -->
+                    <a href="{{ url('/Ganti-Password') }}">
+                        <img src="{{ asset('Resource/Edit.png') }}" alt="Edit Password" class="edit-icon mb-3" style="width: 20px; height:20px;">
+                    </a>
                     <h5>{{ $user->name }}</h5>
+                    <a href="{{ url('/Rekap-Data') }}" class="btn">Rekap Data</a>
                     <div class="menu-dropdown">
                         <div class="dropdown-submenu">
-                            <a href="{{ url('/Rekap-Data/Kelas7') }}" class="d-block">Kelas 7</a>
-                            <a href="{{ url('/Rekap-Data/Kelas8') }}" class="d-block">Kelas 8</a>
-                            <a href="{{ url('/Rekap-Data/Kelas9') }}" class="d-block mb-4">Kelas 9</a>
+                            <a href="{{ url('/Rekap-DataKelas7') }}" class="d-block">Kelas 7</a>
+                            <a href="{{ url('/Rekap-DataKelas8') }}" class="d-block">Kelas 8</a>
+                            <a href="{{ url('/Rekap-DataKelas9') }}" class="d-block">Kelas 9</a>
                         </div>
                     </div>
                     <a href="{{ url('/Materi-KonselingBK') }}" class="btn">Materi</a>
@@ -219,7 +224,7 @@
                     </div>
 
                     <!-- Kotak Detail Keluhan -->
-                    @foreach($keluhans as $keluhan)  
+                    @foreach($keluhans as $keluhan)
                     <div class="detail-box mt-4 p-3" style="border: 1px solid #000000; border-radius: 10px; background-color: #f9f9f9;">
                             <div class="d-flex align-items-center">
                                 <img src="Resource/profile.png" alt="Profile" class="rounded-circle" style="width: 50px; height: 50px; margin-right: 15px;">

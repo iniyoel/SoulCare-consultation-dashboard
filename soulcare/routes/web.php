@@ -10,13 +10,17 @@ Route::get('/', function () {
     return view('LandingPage');
 });
 
+//Halaman Ganti Password
+Route::get('/Ganti-Password', function(){
+    return view('GantiPassword');
+});
+
 // Halaman login
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('Login');
 Route::post('/login', [AuthController::class, 'login']);
-
 // Rute untuk setelah login (untuk pengguna yang sudah terautentikasi)
 Route::middleware('auth')->group(function () {
-    
+
     // Halaman untuk Jurnal Konseling (form untuk memasukkan data konseling)
     Route::get('/Jurnal-Konseling', [CounselingController::class, 'showJurnalKonseling']);
     Route::post('/store-counseling-record', [CounselingController::class, 'store'])->name('storeCounselingRecord');
@@ -41,17 +45,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/Detail-Konseling/{id}', [TeacherController::class, 'showProblem'])->name('showProblem');
 
     // Halaman untuk melihat data per kelas (misalnya Kelas 7, 8, 9)
-    Route::get('/Rekap-Data/Kelas7',[TeacherController::class, 'showClass7'])->name('RekapKelas7');
+    Route::get('/Rekap-DataKelas7',[TeacherController::class, 'showClass7'])->name('RekapKelas7');
 
-    Route::get('/Rekap-Data/Kelas8',[TeacherController::class, 'showClass8'])->name('RekapKelas8');
-    
-    Route::get('/Rekap-Data/Kelas9',[TeacherController::class, 'showClass9'])->name('RekapKelas9');
+    Route::get('/Rekap-DataKelas8',[TeacherController::class, 'showClass8'])->name('RekapKelas8');
+
+    Route::get('/Rekap-DataKelas9',[TeacherController::class, 'showClass9'])->name('RekapKelas9');
 
     Route::get('/Upload-Materi', [TeacherController::class, 'showFormMateri'])->name('showFormMateri');
     Route::post('/store-Materi', [TeacherController::class, 'storeMateri'])->name('storeMateri');
 
     Route::get('/Materi-KonselingBK', [TeacherController::class, 'showMateri'])->name('showMateri');
-    
+
     // Halaman Keluhan Guru BK
     Route::get('/Keluhan-BK', [TeacherController::class, 'showKeluhan'])->name('showKeluhan');
 });

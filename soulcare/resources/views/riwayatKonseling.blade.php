@@ -36,9 +36,18 @@
             color: white;
         }
 
+
         .navbar-custom a {
-            color: white;
+            color: black;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+        }
+        /* Logout icon */
+        .navbar-custom a img {
+            width: 45px;
+            margin-left: 10px;
         }
 
         .sidebar {
@@ -84,7 +93,6 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             position: relative;
             min-height: 75vh;
-            min-height: 75vh;
         }
 
         .spiral {
@@ -92,7 +100,6 @@
             left: -20px;
             top: 20px;
             height: 95%;
-            max-width: 4%;
             max-width: 4%;
         }
 
@@ -142,6 +149,7 @@
         .badge.belajar {
             background-color: #33cc99;
         }
+
     </style>
 </head>
 
@@ -151,9 +159,9 @@
             <img src="{{ asset('Resource/Logo.png') }}" alt="Logo" style="width: 15%; margin-right: 10px;">
             <p style="font-weight: 500; font-size: 35px;  font-family: 'LazyDog', sans-serif;">SoulCare</p>
         </div>
-        <div class="logout-container">
+        <div>
             <a href="{{ url('/') }}" class="mr-5">
-                Logout <img src="{{ asset('Resource/Logout.png') }}" alt="Logout Icon" style="width: 45px; margin-left: 10px;">
+                Logout <img src="{{ asset('Resource/Logout.png') }}" alt="Logout Icon">
             </a>
         </div>
     </nav>
@@ -163,6 +171,10 @@
                 <div class="sidebar">
                     <h1 style="font-weight: 600;">Konselor</h1>
                     <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
+                    <!-- Gambar Edit (Ganti Password) di bawah logo profil -->
+                    <a href="{{ url('/Ganti-Password') }}">
+                        <img src="{{ asset('Resource/Edit.png') }}" alt="Edit Password" class="edit-icon mb-3" style="width: 20px; height:20px;">
+                    </a>
                     <h5>{{ $user->name }}</h5>
                     <p style="color: red;">{{ $className }}</p>
                     <a href="{{ url('/Jurnal-Konseling') }}" class="btn">Jurnal</a>
