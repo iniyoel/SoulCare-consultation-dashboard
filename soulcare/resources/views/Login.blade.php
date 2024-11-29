@@ -63,13 +63,16 @@
             <form method="POST" action="{{ url('/login') }}"> <!-- Rute POST ke /login -->
                 @csrf <!-- Token CSRF Laravel untuk keamanan -->
                 <div class="form-group">
-                    <input type="text" name="username" class="form-control" placeholder="Username" required>
+                    <input type="email" name="email" class="form-control" placeholder="email" required>
                 </div>
                 <div class="form-group">
                     <input type="password" name="password" class="form-control" placeholder="Password" required>
                 </div>
                 <button type="submit" class="btn btn-login">Login</button>
             </form>
+            @if ($errors->any())
+                <p>{{ $errors->first() }}</p>
+            @endif
         </div>
     </div>
 </body>

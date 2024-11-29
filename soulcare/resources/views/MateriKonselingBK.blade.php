@@ -50,8 +50,9 @@
         }
 
         .sidebar .btn:hover {
-            background-color: #254c66;
+            background-color: #6A7F35;
             font-weight: 500;
+            text-decoration: none;
         }
 
         .menu-dropdown a {
@@ -69,6 +70,7 @@
             padding: 30px 50px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             position: relative;
+            min-height: 75vh;
         }
 
         .spiral {
@@ -76,6 +78,7 @@
             left: -20px;
             top: 20px;
             height: 95%;
+            max-width: 4%;
         }
 
         .dropdowns {
@@ -120,13 +123,13 @@
                 <div class="sidebar">
                     <h1 style="font-weight: 600;">Guru BK</h1>
                     <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
-                    <h5>Nama</h5>
+                    <h5>{{ $user->name }}</h5>
                     <div class="menu-dropdown">
                         <a href="{{ url('/Rekap-Data') }}" class="btn">Rekap Data</a>
                         <div class="dropdown-submenu">
                             <a href="{{ url('/Rekap-Data/Kelas7') }}" class="d-block">Kelas 7</a>
                             <a href="{{ url('/Rekap-Data/Kelas8') }}" class="d-block">Kelas 8</a>
-                            <a href="{{ url('/Rekap-Data/Kelas9') }}" class="d-block">Kelas 9</a>
+                            <a href="{{ url('/Rekap-Data/Kelas9') }}" class="d-block mb-4">Kelas 9</a>
                         </div>
                     </div>
                     <a href="{{ url('/Materi-KonselingBK') }}" class="btn">Materi</a>
@@ -143,39 +146,32 @@
 
                     <!-- Materi Konseling -->
                     <div class="mt-4">
+                    @foreach ($materis as $materi)
                         <!-- Materi 1 -->
                         <div class="d-flex mb-4">
                             <!-- Video Placeholder -->
                             <div style="flex: 1; max-width: 360px; margin-right: 20px;">
-                                <iframe width="360" height="180" src="https://www.youtube.com/embed/example1"
-                                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                                    <a href="https://www.youtube.com/watch?v=example1" target="_blank">youtube.com</a>
+                            @if($materi->link_materi)
+                            <iframe width="360" height="180" src="{{ $materi->link_materi }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <a href="{{ $materi->link_materi }}" target="_blank">YouTube Video</a>
+                            @else
+                                <p>No video available.</p>
+                            @endif
                             </div>
-                            <!-- Deskripsi Materi -->
-                            <div style="flex: 3;">
-                                <h5 style="font-weight: bold;">Cara menjadi pendengar yang baik</h5>
-                                <p><a href="files/MenjadiPendengarBaik.pdf" download class="text-danger">Menjadi pendengar yang baik.pdf</a></p>
+                             <!-- Deskripsi Materi -->
+                        <div style="flex: 3;">
+                            <h5 style="font-weight: bold;">{{ $materi->judul_materi }}</h5>
+                            <p>{{ $materi->deskripsi_masalah }}</p>
 
+                            <!-- Jika ada file PDF -->
+                            @if($materi->file_upload)
+                                <p><a href="{{ asset('storage/' . $materi->file_upload) }}" download class="text-danger">Download PDF</a></p>
+                            @else
+                                <p>No file uploaded.</p>
+                            @endif
                             </div>
                         </div>
-
-                        <!-- Materi 2 -->
-                        <div class="d-flex mb-4">
-                            <!-- Video Placeholder -->
-                            <div style="flex: 1; max-width: 360px; margin-right: 20px;">
-                                <iframe width="360" height="180" src="https://www.youtube.com/embed/example2"
-                                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                                    <a href="https://www.youtube.com/watch?v=example2" target="_blank">youtube.com</a>
-                            </div>
-                            <!-- Deskripsi Materi -->
-                            <div style="flex: 3;">
-                                <h5 style="font-weight: bold;">Apa, Sih, Konseling Sebaya Itu?</h5>
-                                <p><a href="files/KonselingSebaya.pdf" download class="text-danger">Konseling Sebaya.pdf</a></p>
-
-                            </div>
-                        </div>
+                    @endforeach
                     </div>
 
                     <!-- Tombol Kembali dan Selanjutnya -->

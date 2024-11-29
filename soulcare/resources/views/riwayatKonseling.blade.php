@@ -60,6 +60,7 @@
             padding: 30px 50px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             position: relative;
+            min-height: 75vh;
         }
 
         .spiral {
@@ -67,6 +68,7 @@
             left: -20px;
             top: 20px;
             height: 95%;
+            max-width: 4%;
         }
 
         .form-group label {
@@ -134,8 +136,8 @@
                 <div class="sidebar">
                     <h1 style="font-weight: 600;">Konselor</h1>
                     <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
-                    <h5>Nama Konselor</h5>
-                    <p style="color: red;">Kelas</p>
+                    <h5>{{ $user->name }}</h5>
+                    <p style="color: red;">{{ $className }}</p>
                     <a href="{{ url('/Jurnal-Konseling') }}" class="btn">Jurnal</a>
                     <a href="{{ url('/Riwayat-Konseling') }}" class="btn">Riwayat</a>
                     <a href="{{ url('/Materi-Konseling') }}" class="btn">Materi</a>
@@ -151,67 +153,36 @@
 
                     <!-- Tabel Riwayat Konseling -->
                     <div class="table-responsive mt-4">
-                        <table class="table table-bordered text-center">
-                            <thead>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Tanggal</th>
+                                <th>Nama Siswa</th>
+                                <th>Gender</th>
+                                <th>Jenis Masalah</th>
+                                <th>Deskripsi</th>
+                                <th>Rujukan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($counselingRecords as $record)
                                 <tr>
-                                    <th>No.</th>
-                                    <th>Tanggal</th>
-                                    <th>Nama</th>
-                                    <th>Jenis Kelamin</th>
-                                    <th>Jenis Masalah</th>
-                                    <th>Deskripsi</th>
-                                    <th>Rujuk</th>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $record->date }}</td>
+                                    <td>{{ $record->student->name }}</td>
+                                    <td>{{ $record->student->gender }}</td>
+                                    <td>{{ $record->issue_type }}</td>
+                                    <td><a href="{{ route('detail-riwayatKonseling', $record->id) }}" style="color: red; text-decoration: underline;">detail</a></td>
+                                    <td>{{ $record->referral }}</td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>12/02/2025</td>
-                                    <td>Niall Horan</td>
-                                    <td>L</td>
-                                    <td><span class="badge karir">Karir</span></td>
-                                    <td><a href="{{ url('/Detail-Konseling') }}" class="text-danger">Detail</a></td>
-                                    <td>Ya</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>12/02/2024</td>
-                                    <td>Lady Gaga</td>
-                                    <td>P</td>
-                                    <td><span class="badge belajar">Belajar</span></td>
-                                    <td><a href="{{ url('/Detail-Konseling') }}" class="text-danger">Detail</a></td>
-                                    <td>Tidak</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>12/02/2024</td>
-                                    <td>Lady Gaga</td>
-                                    <td>P</td>
-                                    <td><span class="badge belajar">Belajar</span></td>
-                                    <td><a href="{{ url('/Detail-Konseling') }}" class="text-danger">Detail</a></td>
-                                    <td>Tidak</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>12/02/2024</td>
-                                    <td>Lady Gaga</td>
-                                    <td>P</td>
-                                    <td><span class="badge belajar">Belajar</span></td>
-                                    <td><a href="{{ url('/Detail-Konseling') }}" class="text-danger">Detail</a></td>
-                                    <td>Tidak</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>12/02/2024</td>
-                                    <td>Lady Gaga</td>
-                                    <td>P</td>
-                                    <td><span class="badge belajar">Belajar</span></td>
-                                    <td><a href="{{ url('/Detail-Konseling') }}" class="text-danger">Detail</a></td>
-                                    <td>Tidak</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+
                     </div>
+
 
                     <!-- Tombol Selanjutnya -->
                     <div class="form-group mt-4 d-flex justify-content-end">

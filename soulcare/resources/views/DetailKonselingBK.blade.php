@@ -63,7 +63,9 @@
             left: -20px;
             top: 20px;
             height: 95%;
+            max-width: 4%;
         }
+        
         .form-group label {
             font-weight: bold;
         }
@@ -121,18 +123,18 @@
                 <div class="sidebar">
                     <h1 style="font-weight: 600;">Guru BK</h1>
                     <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
-                    <h5>Nama</h5>
+                    <h5>{{ $user->name }}</h5>
                     <div class="menu-dropdown">
-                        <a href="RekapData.html" class="btn">Rekap Data</a>
+                        <a href="{{ url('/Rekap-Data') }}" class="btn">Rekap Data</a>
                         <div class="dropdown-submenu">
-                            <a href="kelas7.html" class="d-block">Kelas 7</a>
-                            <a href="kelas8.html" class="d-block">Kelas 8</a>
-                            <a href="kelas9.html" class="d-block">Kelas 9</a>
+                            <a href="{{ url('/Rekap-Data/Kelas7') }}" class="d-block">Kelas 7</a>
+                            <a href="{{ url('/Rekap-Data/Kelas8') }}" class="d-block">Kelas 8</a>
+                            <a href="{{ url('/Rekap-Data/Kelas9') }}" class="d-block mb-3">Kelas 9</a>
                         </div>
                     </div>
-                    <a href="MateriKonselingBK.html" class="btn">Materi</a>
-                    <a href="UploadMateri.html" class="btn">Upload Materi</a>
-                    <a href="KeluhanBK.html" class="btn">Keluhan</a>
+                    <a href="{{ url('/Materi-KonselingBK') }}" class="btn">Materi</a>
+                    <a href="{{ url('/Upload-Materi') }}" class="btn">Upload Materi</a>
+                    <a href="{{ url('/Keluhan-BK') }}" class="btn">Keluhan</a>
                 </div>
             </div>
 
@@ -144,31 +146,21 @@
                     <!-- Deskripsi Masalah -->
                     <div class="form-group mt-4">
                         <label for="deskripsiMasalah">Deskripsi Masalah:</label>
-                        <textarea id="deskripsiMasalah" class="form-control" rows="15" readonly></textarea>
+                        <textarea id="deskripsiMasalah" class="form-control" rows="15" readonly>{{ $keluhan->issue_description }}</textarea>
                     </div>
 
                     <!-- Tombol Selanjutnya -->
                     <div class="form-group mt-4 d-flex justify-content-end">
-                        <button type="button" class="btn btn-save" onclick="nextPage()">Kembali</button>
+                        <button type="button" class="btn btn-save" onclick="backPage()">Kembali</button>
                     </div>
                 </div>
             </div>
 
             <script>
-                // Ambil deskripsi masalah dari localStorage dan tampilkan di textarea
-                document.addEventListener("DOMContentLoaded", () => {
-                    const deskripsi = localStorage.getItem("deskripsiMasalah");
-                    if (deskripsi) {
-                        document.getElementById("deskripsiMasalah").value = deskripsi;
-                    } else {
-                        document.getElementById("deskripsiMasalah").value = "Tidak ada deskripsi masalah yang tersedia.";
-                    }
-                });
-
                 // Fungsi untuk tombol selanjutnya
-                function nextPage() {
+                function backPage() {
                     // Arahkan ke halaman berikutnya
-                    window.location.href = "riwayatKonseling.html";
+                    window.location.href = "{{ url('/Rekap-Data/Kelas7') }}";
                 }
             </script>
 

@@ -52,8 +52,9 @@
         }
 
         .sidebar .btn:hover {
-            background-color: #254c66;
+            background-color: #6A7F35;
             font-weight: 500;
+            text-decoration: none;
         }
 
         .menu-dropdown a {
@@ -78,6 +79,7 @@
             left: -20px;
             top: 20px;
             height: 95%;
+            max-width: 4%;
         }
 
         .dropdowns {
@@ -145,13 +147,13 @@
                 <div class="sidebar">
                     <h1 style="font-weight: 600;">Guru BK</h1>
                     <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
-                    <h5>Nama</h5>
+                    <h5>{{ $user->name }}</h5>
                     <div class="menu-dropdown">
                         <a href="{{ url('/Rekap-Data') }}" class="btn">Rekap Data</a>
                         <div class="dropdown-submenu">
                             <a href="{{ url('/Rekap-Data/Kelas7') }}" class="d-block">Kelas 7</a>
                             <a href="{{ url('/Rekap-Data/Kelas8') }}" class="d-block">Kelas 8</a>
-                            <a href="{{ url('/Rekap-Data/Kelas9') }}" class="d-block">Kelas 9</a>
+                            <a href="{{ url('/Rekap-Data/Kelas9') }}" class="d-block mb-4">Kelas 9</a>
                         </div>
                     </div>
                     <a href="{{ url('/Materi-KonselingBK') }}" class="btn">Materi</a>
@@ -169,27 +171,29 @@
                         <!-- Diagram Pie -->
                         <div class="col-md-5">
                             <div class="chart-container mt-4">
-                                <canvas id="pieChart" width="300" height="300"></canvas>
+                                <canvas id="pieChart" width="350" height="350"></canvas>
                             </div>
                         </div>
                         <!-- Menu Pencarian -->
-                        <div class="col-md-7 d-flex justify-content-end align-items-end">
+                        <!-- <div class="col-md-7 d-flex justify-content-end align-items-end">
                             <input type="text" class="form-control" placeholder="Search" style="max-width: 300px; margin-right: 10px;">
-                        </div>
+                        </div> -->
                     </div>
 
                     <!-- Kotak Detail Keluhan -->
+                    @foreach($keluhans as $keluhan)  
                     <div class="detail-box mt-4 p-3" style="border: 1px solid #000000; border-radius: 10px; background-color: #f9f9f9;">
-                        <div class="d-flex align-items-center">
-                            <img src="Resource/profile.png" alt="Profile" class="rounded-circle" style="width: 50px; height: 50px; margin-right: 15px;">
-                            <div style="display: flex; align-items: center;">
-                                <h5 style="margin: 0; margin-right: 10px;">Nama</h5>
-                                <small style="color: grey;">(dd/mm/yyyy)</small>
+                            <div class="d-flex align-items-center">
+                                <img src="Resource/profile.png" alt="Profile" class="rounded-circle" style="width: 50px; height: 50px; margin-right: 15px;">
+                                <div style="display: flex; align-items: center;">
+                                    <h5 style="margin: 0; margin-right: 10px;">{{ $keluhan->user->name }}</h5>
+                                    <small style="color: grey;">({{ $keluhan->tanggal_konseling }})</small>
+                                </div>
                             </div>
-                        </div>
-                        <p style="margin-top: 10px; font-weight: bold; color: #007BFF;">(Jenis Masalah)</p>
-                        <p>(Isi Keluhan)</p>
+                            <p style="margin-top: 10px; font-weight: bold; color: #007BFF;">{{ $keluhan->jenis_masalah }}</p>
+                            <p>{{ $keluhan->deskripsi_masalah }}</p>
                     </div>
+                    @endforeach
                 </div>
             </div>
 
@@ -200,10 +204,10 @@
         const pieChart = new Chart(ctx, {
             type: 'pie',
             data: {
-                labels: ['Kesulitan Menjaga Rahasia', 'Lainnya', 'Kendala Waktu', 'Dijauhi Teman', 'Kesulitan Menanggapi Cerita'],
+                labels: @json($labels), // Menggunakan data labels dari controller
                 datasets: [{
                     label: 'Persebaran Masalah',
-                    data: [20, 30, 15, 25, 10],
+                    data: @json($data), // Menggunakan data count dari controller
                     backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
                 }]
             },
@@ -243,6 +247,7 @@
             plugins: [ChartDataLabels]
         });
     </script>
+
 
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

@@ -46,9 +46,10 @@
             padding-left: 15px;
         }
 
-        .sidebar .btn:hover{
-            background-color: #254c66;
+        .sidebar .btn:hover {
+            background-color: #6A7F35;
             font-weight: 500;
+            text-decoration: none;
         }
 
         .content {
@@ -63,7 +64,9 @@
             left: -20px;
             top: 20px;
             height: 95%;
+            max-width: 4%;
         }
+        
         .form-group label {
             font-weight: bold;
         }
@@ -121,13 +124,13 @@
                 <div class="sidebar">
                     <h1 style="font-weight: 600;">Guru BK</h1>
                     <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
-                    <h5>Nama</h5>
+                    <h5>{{ $user->name }}</h5>
                     <div class="menu-dropdown">
                         <a href="{{ url('/Rekap-Data') }}" class="btn">Rekap Data</a>
                         <div class="dropdown-submenu">
                             <a href="{{ url('/Rekap-Data/Kelas7') }}" class="d-block">Kelas 7</a>
                             <a href="{{ url('/Rekap-Data/Kelas8') }}" class="d-block">Kelas 8</a>
-                            <a href="{{ url('/Rekap-Data/Kelas9') }}" class="d-block">Kelas 9</a>
+                            <a href="{{ url('/Rekap-Data/Kelas9') }}" class="d-block mb-4">Kelas 9</a>
                         </div>
                     </div>
                     <a href="{{ url('/Materi-KonselingBK') }}" class="btn">Materi</a>
@@ -141,45 +144,41 @@
                 <div class="content">
                     <img src="{{ asset('Resource/Rantai.png') }}" class="spiral" alt="Jilid Spiral">
                     <h2 style="font-weight: 700;">Upload Materi</h2>
-                    <form>
+                    <form action="{{ route('storeMateri') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="form-group mt-4 d-flex align-items-center">
                             <label for="JudulMateri" class="mr-3" style="flex: 1; font-weight: bold;">Judul Materi</label>
                             <div style="flex: 3;">
-                                <input type="text" id="Judul Materi" class="form-control" required>
+                                <input type="text" name="judul_materi" id="JudulMateri" class="form-control" required>
                             </div>
                         </div>
 
                         <div class="form-group mt-4 d-flex align-items-center">
-                            <label for="deskripsiMasalah" class="mr-3" style="flex: 1; font-weight: bold;">Deskripsi Masalah</label>
+                            <label for="deskripsiMasalah" class="mr-3" style="flex: 1; font-weight: bold;">Deskripsi</label>
                             <div style="flex: 3;">
-                                <textarea id="deskripsiMasalah" class="form-control" rows="4" required></textarea>
+                                <textarea name="deskripsi_masalah" id="deskripsiMasalah" class="form-control" rows="4" required></textarea>
                             </div>
                         </div>
 
                         <div class="form-group mt-4 d-flex align-items-center">
                             <label for="LinkMateri" class="mr-3" style="flex: 1; font-weight: bold;">Link Materi</label>
                             <div style="flex: 3;">
-                                <input type="text" id="Link Materi" class="form-control" required>
+                                <input type="text" name="link_materi" id="LinkMateri" class="form-control" required>
                             </div>
                         </div>
 
                         <div class="form-group mt-4 d-flex align-items-center">
                             <label for="uploadFiles" class="mr-3" style="flex: 1; font-weight: bold;">Upload File</label>
-                            <div style="flex: 3; position: relative; ">
-                                    <!-- Input teks -->
-                                    <input type="text" id="fileText" class="form-control">
-                                    <!-- Tombol unggah -->
-                                    <button id="fileUploadBtn" class="btn-upload" style="position: absolute; right: 0; top: 0; height: 100%; border: none; background-color: #4682B4; color: white; padding: 0 20px; border-radius: 0 5px 5px 0;">
-                                        Unggah
-                                    <input type="file" id="uploadFile" class="form-control" style="opacity: 0; position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;">
-                                </div>
-                                <span style="margin-left: 10px; font-size: 12px; color: grey;">*Dokumen maksimal 100 MB</span>
+                            <div style="flex: 2; position: relative;" class="align-items-center">
+                                <input type="file" name="file_upload" id="uploadFile" class="form-control" required>
+                            </div>
                         </div>
 
                         <div class="form-group mt-5 d-flex justify-content-end">
                             <button type="submit" class="btn btn-save">Simpan</button>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>

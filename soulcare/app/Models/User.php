@@ -1,45 +1,57 @@
 <?php
-
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Contracts\Auth\MustVerifyEmail; // Jika fitur verifikasi email diperlukan
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail // Tambahkan ini jika verifikasi email diperlukan
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    // Nama tabel (jika tidak sesuai konvensi Laravel)
+    protected $table = 'users';
+
+    // Kolom yang dapat diisi
     protected $fillable = [
         'name',
         'email',
         'password',
+        'role', // Guru BK atau Konselor Sebaya
+        'class_id', // ID kelas (hanya untuk Konselor Sebaya)
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
+    // Kolom yang disembunyikan
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
+    // Kolom yang otomatis di-cast
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
     ];
+
+    public function class()
+    {
+        return $this->belongsTo(ClassModel::class, 'class_id', 'id');
+    }    
+
+    public function counselingRecords()
+    {
+        return $this->hasMany(CounselingRecord::class, 'counselor_id', 'id');
+    }
+
+    public function scopeKonselorSebaya($query)
+    {
+        return $query->where('role', 'Konselor Sebaya');
+    }
+
+    /**
+     * Scope untuk mendapatkan Guru BK saja
+     */
+    public function scopeGuruBK($query)
+    {
+        return $query->where('role', 'Guru BK');
+    }
 }

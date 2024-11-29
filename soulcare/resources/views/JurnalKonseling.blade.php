@@ -10,7 +10,7 @@
     <style>
         body {
             background-color: #e2f0f9;
-            font-family: "poppins", sans-serif;
+            font-family: "Poppins", sans-serif;
         }
 
         .navbar-custom {
@@ -18,14 +18,17 @@
             color: white;
             padding: 30px 15px;
         }
+
         .navbar-custom h4 {
             margin: 0;
             color: white;
         }
+
         .navbar-custom a {
             color: white;
             text-decoration: none;
         }
+
         .sidebar {
             background-color: white;
             padding: 20px;
@@ -46,7 +49,7 @@
             padding-left: 15px;
         }
 
-        .sidebar .btn:hover{
+        .sidebar .btn:hover {
             background-color: #254c66;
             font-weight: 500;
         }
@@ -58,18 +61,23 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             position: relative;
         }
+
         .spiral {
             position: absolute;
             left: -20px;
             top: 20px;
             height: 95%;
+            max-width: 4%;
         }
+
         .form-group label {
             font-weight: bold;
         }
+
         .form-control {
             border-radius: 5px;
         }
+
         .btn-save {
             background-color: #406882;
             color: white;
@@ -77,6 +85,7 @@
             padding: 10px 30px;
             border: none;
         }
+
         .btn-save:hover {
             background-color: #325467;
         }
@@ -84,6 +93,7 @@
 </head>
 
 <body>
+    <!-- Navbar -->
     <nav class="navbar navbar-custom d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
             <img src="{{ asset('Resource/Logo.png') }}" alt="Logo" style="width: 15%; margin-right: 10px;">
@@ -93,14 +103,15 @@
             <a href="{{ url('/') }}" class="mr-5">Logout</a>
         </div>
     </nav>
+
     <div class="container-fluid mt-4">
         <div class="row">
             <div class="col-md-2">
                 <div class="sidebar">
                     <h1>Konselor</h1>
                     <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
-                    <h5>Nama Konselor</h5>
-                    <p style="color: red;">Kelas</p>
+                    <h5>{{ $user->name }}</h5>
+                    <p style="color: red;">{{ $className }}</p>
                     <a href="{{ url('/Jurnal-Konseling') }}" class="btn">Jurnal</a>
                     <a href="{{ url('/Riwayat-Konseling') }}" class="btn">Riwayat</a>
                     <a href="{{ url('/Materi-Konseling') }}" class="btn">Materi</a>
@@ -113,41 +124,32 @@
                 <div class="content">
                     <img src="{{ asset('Resource/Rantai.png') }}" class="spiral" alt="Jilid Spiral">
                     <h2 style="font-weight: 700;">Jurnal Konseling</h2>
-                    <form>
+                    <!-- Form Jurnal Konseling -->
+                    <form action="{{ route('storeCounselingRecord') }}" method="POST">
+                        @csrf
                         <div class="form-group mt-4 d-flex align-items-center">
                             <label for="namaSiswa" class="mr-3" style="flex: 1; font-weight: bold;">Nama Siswa</label>
                             <div style="flex: 2;">
-                                <input type="text" id="namaSiswa" class="form-control" list="namaSiswaList" placeholder="Ketik atau pilih nama siswa" required>
-                                <datalist id="namaSiswaList">
-                                    <option value="Siswa 1"></option>
-                                    <option value="Siswa 2"></option>
-                                    <option value="Siswa 3"></option>
-                                </datalist>
+                                <select id="namaSiswa" name="student_id" class="form-control" required>
+                                    <option value="" disabled selected>Pilih Nama Siswa</option>
+                                    @foreach ($students as $student)
+                                        <option value="{{ $student->id }}">{{ $student->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
                         <div class="form-group mt-4 d-flex align-items-center">
                             <label for="tanggalKonseling" class="mr-3" style="flex: 1; font-weight: bold;">Tanggal Konseling</label>
                             <div style="flex: 2;">
-                                <input type="date" id="tanggalKonseling" class="form-control" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group mt-4 d-flex align-items-center">
-                            <label for="jenisKelamin" class="mr-3" style="flex: 1; font-weight: bold;">Jenis Kelamin</label>
-                            <div style="flex: 2;">
-                                <select id="jenisKelamin" class="form-control" required>
-                                    <option value="" disabled selected>Pilih Jenis Kelamin</option>
-                                    <option value="Laki-Laki">Laki-Laki</option>
-                                    <option value="Perempuan">Perempuan</option>
-                                </select>
+                                <input type="date" id="tanggalKonseling" name="date" class="form-control" required>
                             </div>
                         </div>
 
                         <div class="form-group mt-4 d-flex align-items-center">
                             <label for="jenisMasalah" class="mr-3" style="flex: 1; font-weight: bold;">Jenis Masalah</label>
                             <div style="flex: 2;">
-                                <select id="jenisMasalah" class="form-control" required>
+                                <select id="jenisMasalah" name="issue_type" class="form-control" required>
                                     <option value="" disabled selected>Pilih Jenis Masalah</option>
                                     <option value="Social">Social</option>
                                     <option value="Karir">Karir</option>
@@ -161,14 +163,14 @@
                         <div class="form-group mt-4 d-flex align-items-center">
                             <label for="deskripsiMasalah" class="mr-3" style="flex: 1; font-weight: bold;">Deskripsi Masalah</label>
                             <div style="flex: 2;">
-                                <textarea id="deskripsiMasalah" class="form-control" rows="3" required></textarea>
+                                <textarea id="deskripsiMasalah" name="issue_description" class="form-control" rows="3" required></textarea>
                             </div>
                         </div>
 
                         <div class="form-group mt-4 d-flex align-items-center">
                             <label for="rujukan" class="mr-3" style="flex: 1; font-weight: bold;">Rujukan</label>
                             <div style="flex: 2;">
-                                <select id="rujukan" class="form-control" required>
+                                <select id="rujukan" name="referral" class="form-control" required>
                                     <option value="" disabled selected>Pilih Rujukan</option>
                                     <option value="Iya">Iya</option>
                                     <option value="Tidak">Tidak</option>
@@ -185,10 +187,6 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS, Popper.js, and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -18,14 +18,17 @@
             color: white;
             padding: 30px 15px;
         }
+
         .navbar-custom h4 {
             margin: 0;
             color: white;
         }
+
         .navbar-custom a {
             color: white;
             text-decoration: none;
         }
+
         .sidebar {
             background-color: white;
             padding: 20px;
@@ -46,7 +49,7 @@
             padding-left: 15px;
         }
 
-        .sidebar .btn:hover{
+        .sidebar .btn:hover {
             background-color: #254c66;
             font-weight: 500;
         }
@@ -57,20 +60,24 @@
             padding: 30px 50px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             position: relative;
-            /* min-height: 65vh; */
         }
+
         .spiral {
             position: absolute;
             left: -20px;
             top: 20px;
             height: 95%;
+            max-width: 4%;
         }
+
         .form-group label {
             font-weight: bold;
         }
+
         .form-control {
             border-radius: 5px;
         }
+
         .btn-save {
             background-color: #406882;
             color: white;
@@ -78,6 +85,7 @@
             padding: 10px 30px;
             border: none;
         }
+
         .btn-save:hover {
             background-color: #325467;
         }
@@ -94,14 +102,15 @@
             <a href="{{ url('/') }}" class="mr-5">Logout</a>
         </div>
     </nav>
+
     <div class="container-fluid mt-4">
         <div class="row">
             <div class="col-md-2">
                 <div class="sidebar">
                     <h1 style="font-weight: 600;">Konselor</h1>
                     <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
-                    <h5>Nama Konselor</h5>
-                    <p style="color: red;">Kelas</p>
+                    <h5>{{ $user->name }}</h5>
+                    <p style="color: red;">{{ $className }}</p>
                     <a href="{{ url('/Jurnal-Konseling') }}" class="btn">Jurnal</a>
                     <a href="{{ url('/Riwayat-Konseling') }}" class="btn">Riwayat</a>
                     <a href="{{ url('/Materi-Konseling') }}" class="btn">Materi</a>
@@ -110,21 +119,26 @@
             </div>
 
             <!-- Main Content -->
-            <div class="col-md-10 mb-3" >
+            <div class="col-md-10 mb-3">
                 <div class="content">
                     <img src="{{ asset('Resource/Rantai.png') }}" class="spiral" alt="Jilid Spiral">
                     <h2 style="font-weight: 700;">Keluhan Konselor</h2>
-                    <form>
+                    
+                    <!-- Form untuk mengisi keluhan -->
+                    <form action="{{ route('storeComplain') }}" method="POST">
+                        @csrf
+                        <!-- Tanggal Konseling -->
                         <div class="form-group mt-4 d-flex align-items-center">
                             <label for="tanggalKonseling" class="mr-3" style="flex: 1; font-weight: bold;">Tanggal</label>
                             <div style="flex: 2;">
-                                <input type="date" id="tanggalKonseling" class="form-control" required>
+                                <input type="date" id="tanggalKonseling" name="tanggal_konseling" class="form-control" required>
                             </div>
                         </div>
+                        <!-- Jenis Masalah -->
                         <div class="form-group mt-4 d-flex align-items-center">
                             <label for="jenisMasalah" class="mr-3" style="flex: 1; font-weight: bold;">Jenis Masalah</label>
                             <div style="flex: 2;">
-                                <select id="jenisMasalah" class="form-control" required>
+                                <select id="jenisMasalah" name="jenis_masalah" class="form-control" required>
                                     <option value="" disabled selected>Pilih Jenis Masalah</option>
                                     <option value="Kesulitan Menjaga Rahasia">Kesulitan Menjaga Rahasia</option>
                                     <option value="Kesulitan Menanggapi Cerita">Kesulitan Menanggapi Cerita</option>
@@ -135,16 +149,19 @@
                                 </select>
                             </div>
                         </div>
+                        <!-- Deskripsi Masalah -->
                         <div class="form-group mt-4 d-flex align-items-center">
                             <label for="deskripsiMasalah" class="mr-3" style="flex: 1; font-weight: bold;">Deskripsi Masalah</label>
                             <div style="flex: 2;">
-                                <textarea id="deskripsiMasalah" class="form-control" rows="7" required></textarea>
+                                <textarea id="deskripsiMasalah" name="deskripsi_masalah" class="form-control" rows="7" required></textarea>
                             </div>
                         </div>
+                        <!-- Tombol Simpan -->
                         <div class="form-group mt-4 d-flex justify-content-end">
                             <button type="submit" class="btn btn-save">Simpan</button>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>
@@ -155,4 +172,5 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

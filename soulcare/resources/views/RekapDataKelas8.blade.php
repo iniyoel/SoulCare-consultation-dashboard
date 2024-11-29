@@ -52,8 +52,9 @@
         }
 
         .sidebar .btn:hover {
-            background-color: #254c66;
+            background-color: #6A7F35;
             font-weight: 500;
+            text-decoration: none;
         }
 
         .menu-dropdown a {
@@ -78,12 +79,13 @@
             left: -20px;
             top: 20px;
             height: 95%;
+            max-width: 4%;
         }
 
         .dropdowns {
             display: flex;
             justify-content: flex-start;
-            gap: 160px;
+            gap: 25px;
             align-items: center;
         }
 
@@ -182,13 +184,13 @@
                 <div class="sidebar">
                     <h1 style="font-weight: 600;">Guru BK</h1>
                     <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
-                    <h5>Nama</h5>
+                    <h5>{{ $user->name }}</h5>
                     <div class="menu-dropdown">
                         <a href="{{ url('/Rekap-Data') }}" class="btn">Rekap Data</a>
                         <div class="dropdown-submenu">
                             <a href="{{ url('/Rekap-Data/Kelas7') }}" class="d-block">Kelas 7</a>
                             <a href="{{ url('/Rekap-Data/Kelas8') }}" class="d-block">Kelas 8</a>
-                            <a href="{{ url('/Rekap-Data/Kelas9') }}" class="d-block">Kelas 9</a>
+                            <a href="{{ url('/Rekap-Data/Kelas9') }}" class="d-block mb-4">Kelas 9</a>
                         </div>
                     </div>
                     <a href="{{ url('/Materi-KonselingBK') }}" class="btn">Materi</a>
@@ -200,31 +202,41 @@
             <!-- Main Content -->
             <div class="col-md-10 mb-3">
                 <div class="content">
-                    <img src="{{ asset('Resource/Rantai.png') }}" class="spiral" alt="Jilid Spiral">
+                    <img src="{{ url('/Resource/Rantai.png') }}" class="spiral" alt="Jilid Spiral">
                     <h2 style="font-weight: 700;">Rekap Data Konseling</h2>
                     <h4 style="font-weight: 700;">Persebaran Masalah Siswa Secara Keseluruhan</h4>
 
+                    <form action="{{ route('RekapKelas7') }}" method="GET">
                     <div class="dropdowns">
-                        <div>
-                            <label for="year">Tahun:</label>
-                            <select id="year" class="form-select">
-                                <option>2024</option>
-                                <option>2023</option>
-                                <option>2022</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="month">Bulan:</label>
-                            <select id="month" class="form-select">
-                                <option>November</option>
-                                <option>Oktober</option>
-                                <option>September</option>
-                            </select>
-                        </div>
-                    </div>
+        <div>
+            <label for="year">Tahun:</label>
+            <select id="year" name="year" class="form-select">
+                <option value="2024" {{ $year == 2024 ? 'selected' : '' }}>2024</option>
+                <option value="2025" {{ $year == 2025 ? 'selected' : '' }}>2025</option>
+                <option value="2026" {{ $year == 2026 ? 'selected' : '' }}>2026</option>
+            </select>
+        </div>
+        <div>
+            <label for="month">Bulan:</label>
+            <select id="month" name="month" class="form-select">
+                <option value="1" {{ $month == 1 ? 'selected' : '' }}>Januari</option>
+                <option value="2" {{ $month == 2 ? 'selected' : '' }}>Februari</option>
+                <option value="3" {{ $month == 3 ? 'selected' : '' }}>Maret</option>
+                <option value="4" {{ $month == 4 ? 'selected' : '' }}>April</option>
+                <option value="5" {{ $month == 5 ? 'selected' : '' }}>Mei</option>
+                <option value="6" {{ $month == 6 ? 'selected' : '' }}>Juni</option>
+                <option value="7" {{ $month == 7 ? 'selected' : '' }}>Juli</option>
+                <option value="8" {{ $month == 8 ? 'selected' : '' }}>Agustus</option>
+                <option value="9" {{ $month == 9 ? 'selected' : '' }}>September</option>
+                <option value="10" {{ $month == 10 ? 'selected' : '' }}>Oktober</option>
+                <option value="11" {{ $month == 11 ? 'selected' : '' }}>November</option>
+                <option value="12" {{ $month == 12 ? 'selected' : '' }}>Desember</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="border-radius: 17px; background-color: #93AF4C; border: none;">Tampilkan</button>
+    </div>
                     <div class="chart-container mt-4">
-                        <canvas id="pieChart" width="600" height="600"></canvas>
-
+                        <canvas id="pieChart" width="400" height="400"></canvas>
                     </div>
 
 
@@ -236,10 +248,17 @@
                             <div class="form-group">
                                 <label for="kelasDropdown" class="font-weight-bold">Kelas</label>
                                 <select id="kelasDropdown" class="form-control" style="width: 150px; display: inline-block;">
-                                    <option>7A</option>
-                                    <option>8B</option>
-                                    <option>9A</option>
+                                    <option value="8A" {{ $kelas == '8A' ? 'selected' : '' }}>8A</option>
+                                    <option value="8B" {{ $kelas == '8B' ? 'selected' : '' }}>8B</option>
+                                    <option value="8C" {{ $kelas == '8C' ? 'selected' : '' }}>8C</option>
+                                    <option value="8D" {{ $kelas == '8D' ? 'selected' : '' }}>8D</option>
+                                    <option value="8E" {{ $kelas == '8E' ? 'selected' : '' }}>8E</option>
+                                    <option value="8F" {{ $kelas == '8F' ? 'selected' : '' }}>8F</option>
+                                    <option value="8G" {{ $kelas == '8G' ? 'selected' : '' }}>8G</option>
+                                    <option value="8H" {{ $kelas == '8H' ? 'selected' : '' }}>8H</option>
+                                    <option value="8I" {{ $kelas == '8I' ? 'selected' : '' }}>8I</option>
                                 </select>
+                                <button type="submit" class="btn btn-primary">Tampilkan</button>
                             </div>
                             <div class="form-group">
                                 <label for="searchInput" class="font-weight-bold"></label>
@@ -251,7 +270,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <table class="table table-striped table-bordered">
                             <thead>
                                 <tr>
@@ -266,26 +284,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>12/02/2025</td>
-                                    <td>Niall Horan</td>
-                                    <td>Niall Horan</td>
-                                    <td>L</td>
-                                    <td><span class="label karir">Karir</span></td>
-                                    <td><a href="#" class="btn btn-info btn-sm">Detail</a></td>
-                                    <td>Ya</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>13/02/2024</td>
-                                    <td>Lady Gaga</td>
-                                    <td>Lady Gaga</td>
-                                    <td>P</td>
-                                    <td><span class="label belajar">Belajar</span></td>
-                                    <td><a href="DetailKonselingBK.html" class="btn btn-info btn-sm">Detail</a></td>
-                                    <td>Tidak</td>
-                                </tr>
+                                @foreach ($keluhan as $index => $item)
+                                    <tr>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</td>
+                                        <td>{{ $item->counselor->name ?? 'Tidak ada' }}</td>
+                                        <td>{{ $item->student->name }}</td>
+                                        <td>{{ $item->student->gender }}</td>
+                                        <td>
+                                                {{ $item->issue_type }}
+                                        </td>
+                                        <td><a href="{{ route('showProblem', ['id' => $item->id]) }}" class="btn btn-info btn-sm"">Deskripsi</a></td>
+                                        <td>{{ $item->referral}}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -296,14 +308,18 @@
 
     <!-- Script Chart.js -->
     <script>
+        // Ambil data dari PHP dan buat chart
+        const labels = @json($labels);
+        const data = @json($data);
+
         const ctx = document.getElementById('pieChart').getContext('2d');
         const pieChart = new Chart(ctx, {
             type: 'pie',
             data: {
-                labels: ['Sosial', 'Karir', 'Pribadi', 'Belajar', 'Lainnya'],
+                labels: labels,
                 datasets: [{
                     label: 'Persebaran Masalah',
-                    data: [20, 30, 15, 25, 10],
+                    data: data,
                     backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
                 }]
             },
@@ -342,6 +358,15 @@
             },
             plugins: [ChartDataLabels]
         });
+
+        // Fungsi untuk memperbarui grafik ketika memilih tahun atau bulan baru
+        function updateChart() {
+            const year = document.getElementById('year').value;
+            const month = document.getElementById('month').value;
+
+            // Kirim request untuk mengambil data baru dan memperbarui chart
+            window.location.href = `/rekap-data?year=${year}&month=${month}`;
+        }
     </script>
 
 

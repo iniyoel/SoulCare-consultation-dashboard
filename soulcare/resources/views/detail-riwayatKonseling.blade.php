@@ -67,6 +67,7 @@
             left: -20px;
             top: 20px;
             height: 95%;
+            max-width: 4%;
         }
 
         .form-group label {
@@ -107,8 +108,8 @@
                 <div class="sidebar">
                     <h1 style="font-weight: 600;">Konselor</h1>
                     <img src="{{ asset('Resource/profile.png') }}" alt="Profile" class="img-fluid rounded-circle mb-3" style="width: 80px;">
-                    <h5>Nama Konselor</h5>
-                    <p style="color: red;">Kelas</p>
+                    <h5>{{ $user->name }}</h5>
+                    <p style="color: red;">{{ $className }}</p>
                     <a href="{{ url('/Jurnal-Konseling') }}" class="btn">Jurnal</a>
                     <a href="{{ url('/Riwayat-Konseling') }}" class="btn">Riwayat</a>
                     <a href="{{ url('/Materi-Konseling') }}" class="btn">Materi</a>
@@ -119,35 +120,27 @@
             <!-- Main Content -->
             <div class="col-md-10 mb-3">
                 <div class="content">
-                    <img src="Resource/Rantai.png" class="spiral" alt="Jilid Spiral">
+                    <img src="{{ asset('Resource/Rantai.png') }}" class="spiral" alt="Jilid Spiral">
 
                     <!-- Deskripsi Masalah -->
                     <div class="form-group mt-4">
                         <label for="deskripsiMasalah">Deskripsi Masalah:</label>
-                        <textarea id="deskripsiMasalah" class="form-control" rows="15" readonly></textarea>
+                        <textarea id="deskripsiMasalah" class="form-control" rows="15" readonly>{{ $record->issue_description }}
+                        </textarea>
                     </div>
 
                     <!-- Tombol Selanjutnya -->
                     <div class="form-group mt-4 d-flex justify-content-end">
-                        <button type="button" class="btn btn-save" onclick="nextPage()">Kembali</button>
+                        <button type="button" class="btn btn-save" onclick="backPage()">Kembali</button>
                     </div>
                 </div>
             </div>
 
             <script>
-                // Ambil deskripsi masalah dari localStorage dan tampilkan di textarea
-                document.addEventListener("DOMContentLoaded", () => {
-                    const deskripsi = localStorage.getItem("deskripsiMasalah");
-                    if (deskripsi) {
-                        document.getElementById("deskripsiMasalah").value = deskripsi;
-                    } else {
-                        document.getElementById("deskripsiMasalah").value = "Tidak ada deskripsi masalah yang tersedia.";
-                    }
-                });
+
 
                 // Fungsi untuk tombol selanjutnya
-                function nextPage() {
-                    // Arahkan ke halaman berikutnya
+                function backPage() {
                     window.location.href = "{{ url('/Riwayat-Konseling') }}";
                 }
             </script>
