@@ -7,17 +7,29 @@
     <title>SoulCare</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
+        @font-face {
+            font-family: 'LazyDog';
+            src: url('assets/fonts/Lazydog.woff2') format('woff2'),
+                 url('assets/fonts/Lazydog.woff') format('woff'),
+                 url('assets/fonts/Lazydog.eot') format('eot');
+            font-weight: normal;
+            font-style: normal;
+        }
         body {
             background-color: #e2f0f9;
             font-family: "poppins";
         }
 
         .navbar-custom {
-            background: linear-gradient(90deg, #C6D899 0%, #84B297 65%);
+            background: linear-gradient(to bottom, #C6D899 0%, #84B297 65%);
             color: white;
             padding: 30px 15px;
         }
+
 
         .navbar-custom h4 {
             margin: 0;
@@ -35,6 +47,17 @@
             border-radius: 21px;
             height: max-content;
             text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1; /* Make the sidebar flexible */
+        }
+        .edit-icon {
+            width: 30px;
+            height: 30px;
+            margin-top: 10px; /* Add some space between the profile picture and the edit icon */
+            cursor: pointer;
+
         }
 
         .sidebar .btn {
@@ -61,6 +84,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             position: relative;
             min-height: 75vh;
+            min-height: 75vh;
         }
 
         .spiral {
@@ -68,6 +92,7 @@
             left: -20px;
             top: 20px;
             height: 95%;
+            max-width: 4%;
             max-width: 4%;
         }
 
@@ -124,10 +149,12 @@
     <nav class="navbar navbar-custom d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
             <img src="{{ asset('Resource/Logo.png') }}" alt="Logo" style="width: 15%; margin-right: 10px;">
-            <p style="font-weight: 500; font-size: 35px;">SoulCare</p>
+            <p style="font-weight: 500; font-size: 35px;  font-family: 'LazyDog', sans-serif;">SoulCare</p>
         </div>
-        <div>
-            <a href="{{ url('/') }}" class="mr-5">Logout</a>
+        <div class="logout-container">
+            <a href="{{ url('/') }}" class="mr-5">
+                Logout <img src="{{ asset('Resource/Logout.png') }}" alt="Logout Icon" style="width: 45px; margin-left: 10px;">
+            </a>
         </div>
     </nav>
     <div class="container-fluid mt-4">
@@ -148,8 +175,11 @@
             <!-- Main Content -->
             <div class="col-md-10 mb-3">
                 <div class="content">
-                    <img src="{{ asset('Resource/Rantai.png') }}" class="spiral" alt="Jilid Spiral">
-                    <h2 style="font-weight: 700;">Riwayat Konseling</h2>
+                    <img src="{{ asset('Resource/Rantai.svg') }}" class="spiral" alt="Jilid Spiral">
+                    <h2 style="font-weight: 700; display: flex; align-items: center;">
+                        <img src="{{ asset('Resource/garis3.png') }}" alt="Garis3" class="garis">
+                        Riwayat Konseling
+                    </h2>
 
                     <!-- Tabel Riwayat Konseling -->
                     <div class="table-responsive mt-4">

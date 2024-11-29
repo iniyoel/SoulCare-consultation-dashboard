@@ -8,13 +8,21 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'LazyDog';
+            src: url('assets/fonts/Lazydog.woff2') format('woff2'),
+                 url('assets/fonts/Lazydog.woff') format('woff'),
+                 url('assets/fonts/Lazydog.eot') format('eot');
+            font-weight: normal;
+            font-style: normal;
+        }
         body {
             background-color: #e2f0f9;
-            font-family: "poppins";
+            font-family: "poppins", sans-serif;
         }
 
         .navbar-custom {
-            background: linear-gradient(90deg, #C6D899 0%, #84B297 65%);
+            background: linear-gradient(to bottom, #C6D899 0%, #84B297 65%);
             color: white;
             padding: 30px 15px;
         }
@@ -25,8 +33,17 @@
         }
 
         .navbar-custom a {
-            color: white;
+            color: black;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+        }
+
+        /* Logout icon */
+        .navbar-custom a img {
+            width: 45px;
+            margin-left: 10px;
         }
 
         .sidebar {
@@ -35,6 +52,17 @@
             border-radius: 21px;
             height: max-content;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center the items horizontally */
+        }
+
+        .edit-icon {
+            width: 30px;
+            height: 30px;
+            margin-top: 10px; /* Add some space between the profile picture and the edit icon */
+            cursor: pointer;
+
         }
 
         .sidebar .btn {
@@ -89,6 +117,13 @@
         .btn-save:hover {
             background-color: #325467;
         }
+
+        /* Garis dekoratif di kiri */
+        .garis {
+            width: 55px;
+            height: auto;
+            margin-right: 10px;
+        }
     </style>
 </head>
 
@@ -96,10 +131,12 @@
     <nav class="navbar navbar-custom d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
             <img src="{{ asset('Resource/Logo.png') }}" alt="Logo" style="width: 15%; margin-right: 10px;">
-            <p style="font-weight: 500; font-size: 35px;">SoulCare</p>
+            <p style="font-weight: 500; font-size: 35px;  font-family: 'LazyDog', sans-serif;">SoulCare</p>
         </div>
         <div>
-            <a href="{{ url('/') }}" class="mr-5">Logout</a>
+            <a href="{{ url('/') }}" class="mr-5">
+                Logout <img src="{{ asset('Resource/Logout.png') }}" alt="Logout Icon">
+            </a>
         </div>
     </nav>
 

@@ -92,16 +92,17 @@
             <!-- FORM LOGIN -->
             <form method="POST" action="{{ url('/login') }}">
                 @csrf <!-- Token CSRF Laravel untuk keamanan -->
+                <h2 class="mb-5">Create New Password</h2>
                 <div class="form-group">
-                    <input type="email" name="email" class="form-control" placeholder="email" required>
+                    <input type="text" name="New-Password" class="form-control" placeholder="New Password" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" name="password" class="form-control" placeholder="Password" required>
+                    <input type="password" name="Confirm New-Password" class="form-control" placeholder="Confrim New Password" required>
                 </div>
-                <button type="submit" class="btn btn-login">Login</button>
+                <button type="submit" class="btn btn-login">Change Password</button>
             </form>
             @if ($errors->any())
-                <p>{{ $errors->first() }}</p>
+                <p style="color: red;">{{ $errors->first() }}</p>
             @endif
         </div>
     </div>

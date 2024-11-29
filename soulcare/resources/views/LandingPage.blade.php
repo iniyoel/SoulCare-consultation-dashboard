@@ -13,12 +13,51 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 95vh;
+            min-height: 100vh;
             margin: 0;
+            position: relative;
+            overflow: hidden;
         }
-        h1{
+
+        /* Menambahkan gambar awan di bagian atas sebagai background */
+        .cloud {
+            position: absolute;
+            top: 0; /* Menjaga posisi awan tetap di atas */
+            left: 0;
+            width: 100%; /* Mengisi lebar penuh layar */
+            height: 40vh; /* Sesuaikan tinggi awan, gunakan persen agar responsif */
+            object-fit: cover; /* Memastikan gambar menutupi area tanpa terpotong */
+            z-index: -2; /* Menempatkan gambar di belakang */
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .cloud:hover {
+            opacity: 1;
+            transform: scale(1.05); /* Efek zoom saat hover */
+        }
+
+        /* Menambahkan gambar rumput di bagian bawah, hanya sebagian yang ditampilkan */
+        .grass {
+            position: absolute;
+            bottom: -20%; /* Menurunkan posisi rumput lebih jauh */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 30%; /* Menampilkan lebih banyak rumput */
+            object-fit: cover;
+            z-index: -1; /* Rumput tetap berada di belakang elemen utama */
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .grass:hover {
+            opacity: 1;
+            transform: scale(1.05); /* Efek zoom saat hover */
+        }
+
+        h1 {
             font-size: 50px;
         }
+
         .logo {
             max-width: 30%;
         }
@@ -49,11 +88,13 @@
             height: 100px;
             margin-bottom: 10px;
         }
-        a{
+
+        a {
             text-decoration: none;
             color: black;
         }
-        a:hover{
+
+        a:hover {
             color: black;
             text-decoration: none;
         }
@@ -62,34 +103,40 @@
 
 <body>
     <div class="container text-center m-auto">
+        <!-- Gambar Awan -->
+        <img src="{{ asset('Resource/Cloud.png') }}" alt="Awan" class="cloud">
+
         <img src="{{ asset('Resource/Logo.png') }}" alt="SoulCare Logo" class="logo mb-3">
 
-        <!-- Title -->
+        <!-- Judul -->
         <h1 class="font-weight-bold">Selamat Datang!</h1>
 
-        <!-- Options -->
+        <!-- Pilihan -->
         <div class="row justify-content-center mt-5">
-                <div class="col-md-3 d-flex justify-content-center">
-                    <a href="{{ url('/login') }}">
-                        <div class="option-card">
-                            <img src="{{ asset('Resource/Konselor.png') }}" alt="Konselor Sebaya">
-                            <h5>Konselor Sebaya</h5>
-                        </div>
-                    </a>
-                </div>
+            <div class="col-md-3 d-flex justify-content-center">
+                <a href="{{ url('/login') }}">
+                    <div class="option-card">
+                        <img src="{{ asset('Resource/Konselor.png') }}" alt="Konselor Sebaya">
+                        <h5>Konselor Sebaya</h5>
+                    </div>
+                </a>
+            </div>
 
-                <div class="col-md-3 d-flex justify-content-center">
-                    <a href="{{ url('/login') }}">
-                        <div class="option-card">
-                            <img src="{{ asset('Resource/GuruBK.png') }}" alt="Guru BK">
-                            <h5>Guru BK</h5>
-                        </div>
-                    </a>
-                </div>
+            <div class="col-md-3 d-flex justify-content-center">
+                <a href="{{ url('/login') }}">
+                    <div class="option-card">
+                        <img src="{{ asset('Resource/GuruBK.png') }}" alt="Guru BK">
+                        <h5>Guru BK</h5>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
 
-    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <!-- Gambar Rumput -->
+    <img src="{{ asset('Resource/Grass.png') }}" alt="Rumput" class="grass">
+
+    <!-- Bootstrap JS, Popper.js, dan jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
