@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CounselingController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\UserController;
 
 // Halaman landing (login)
 Route::get('/', function () {
@@ -11,9 +12,7 @@ Route::get('/', function () {
 });
 
 //Halaman Ganti Password
-Route::get('/Ganti-Password', function(){
-    return view('GantiPassword');
-});
+// routes/web.php
 
 // Halaman login
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('Login');
@@ -22,7 +21,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth')->group(function () {
 
     // Halaman untuk Jurnal Konseling (form untuk memasukkan data konseling)
-    Route::get('/Jurnal-Konseling', [CounselingController::class, 'showJurnalKonseling']);
+    Route::get('/Jurnal-Konseling', [CounselingController::class, 'showJurnalKonseling'])->name('jurnalKonseling');
     Route::post('/store-counseling-record', [CounselingController::class, 'store'])->name('storeCounselingRecord');
 
     // Halaman Riwayat Konseling (untuk melihat riwayat data konseling yang disimpan)
@@ -58,7 +57,10 @@ Route::middleware('auth')->group(function () {
 
     // Halaman Keluhan Guru BK
     Route::get('/Keluhan-BK', [TeacherController::class, 'showKeluhan'])->name('showKeluhan');
-});
+        
+    Route::get('/Ganti-Password', [UserController::class, 'showUpdatePassword'])->name('showUpdatePassword');
+    Route::post('/update-password', [UserController::class, 'updatePassword'])->name('updatePassword');
+    });
 
 // Rute untuk logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

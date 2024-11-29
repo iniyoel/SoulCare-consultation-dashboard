@@ -24,7 +24,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 40vh; /* Sesuaikan tinggi awan */
+            height: 40vh;
             object-fit: cover;
             z-index: -1;
         }
@@ -32,11 +32,11 @@
         /* Gambar Rumput di bawah */
         .grass {
             position: absolute;
-            bottom: -20%; /* Menurunkan posisi rumput */
+            bottom: -20%;
             left: 50%;
             transform: translateX(-50%);
             width: 100%;
-            height: 30%; /* Menampilkan sebagian rumput */
+            height: 30%;
             object-fit: cover;
             z-index: -1;
         }
@@ -54,7 +54,7 @@
             width: 100%;
             max-width: 400px;
             text-align: center;
-            z-index: 1; /* Pastikan login card di atas gambar */
+            z-index: 1;
         }
 
         .form-control {
@@ -82,31 +82,31 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Gambar Awan -->
     <img src="{{ asset('Resource/Cloud.png') }}" alt="Awan" class="cloud">
 
     <div class="text-center">
-        <img src="{{ asset('Resource/Logo.png') }}" alt="SoulCare Logo" class="logo"> <!-- Pastikan path gambar benar -->
+        <img src="{{ asset('Resource/Logo.png') }}" alt="SoulCare Logo" class="logo">
         <div class="login-card">
             <!-- FORM LOGIN -->
-            <form method="POST" action="{{ url('/login') }}">
-                @csrf <!-- Token CSRF Laravel untuk keamanan -->
-                <h2 class="mb-5">Create New Password</h2>
+            <form method="POST" action="{{ route('updatePassword') }}">
+                @csrf
+                <h2 class="mb-5">Buat Password Baru</h2>
                 <div class="form-group">
-                    <input type="text" name="Change Username" class="form-control" placeholder="Change Username" required>
+                    <input type="text" name="name" class="form-control" placeholder="Ubah Nama" required>
                 </div>
+                <!-- Input New Password -->
                 <div class="form-group">
-                    <input type="password" name="New Password" class="form-control" placeholder="New Password" required>
+                    <input type="password" name="new_password" class="form-control" placeholder="Password Baru" required>
                 </div>
+                <!-- Confirm Password -->
                 <div class="form-group">
-                    <input type="password" name="Confirm New Password" class="form-control" placeholder="Confrim New Password" required>
+                    <input type="password" name="confirm_new_password" class="form-control" placeholder="Konfirmasi Password" required>
                 </div>
-                <button type="submit" class="btn btn-login">Change Now</button>
+                <button type="submit" class="btn btn-login">Ubah Sekarang</button>
             </form>
-            @if ($errors->any())
-                <p style="color: red;">{{ $errors->first() }}</p>
-            @endif
         </div>
     </div>
 
