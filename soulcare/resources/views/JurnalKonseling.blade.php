@@ -22,7 +22,7 @@
         }
 
         .navbar-custom {
-            background: linear-gradient(90deg, #C6D899 0%, #84B297 65%);
+            background: linear-gradient(to bottom, #C6D899 0%, #84B297 65%);
             color: white;
             padding: 30px 15px;
         }

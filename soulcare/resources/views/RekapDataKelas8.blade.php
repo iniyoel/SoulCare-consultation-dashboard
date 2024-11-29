@@ -19,13 +19,8 @@
             font-style: normal;
         }
 
-        body {
-            background-color: #e2f0f9;
-            font-family: "poppins"; /* Gunakan font default untuk body */
-        }
-
         .navbar-custom {
-            background: linear-gradient(90deg, #BED7DD 0%, #4B979F 65%);
+            background: linear-gradient(to bottom, #BED7DD 0%, #4B979F 100%);
             color: white;
             padding: 30px 15px;
         }
