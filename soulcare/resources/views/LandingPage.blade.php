@@ -7,6 +7,7 @@
     <title>SoulCare</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="{{ asset('Resource/Icon.png') }}" type="image/png">
     <style>
         body {
             background-color: #e2f0f9;
