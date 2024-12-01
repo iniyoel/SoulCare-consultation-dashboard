@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1024, initial-scale=1.0, user-scalable=no">
     <title>SoulCare</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -49,7 +49,13 @@
             margin-left: 10px;
         }
 
-
+        .sidebar h1 {
+            font-size: 1.5rem; /* Set ukuran font default */
+            margin-bottom: 10px;
+            overflow: hidden;  /* Untuk menghindari teks keluar dari kontainer */
+            text-overflow: ellipsis; /* Menambahkan elipsis jika teks terlalu panjang */
+            white-space: nowrap; /* Mencegah teks untuk terpecah pada baris baru */
+        }
         .sidebar {
             background-color: white;
             padding: 20px;

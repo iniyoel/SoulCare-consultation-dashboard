@@ -9,15 +9,20 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" href="{{ asset('Resource/Icon.png') }}" type="image/png">
     <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%; /* Pastikan body mengisi seluruh lebar layar */
+        }
+
         body {
             background-color: #e2f0f9;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         /* Menambahkan gambar awan di bagian atas sebagai background */
@@ -30,11 +35,6 @@
             object-fit: cover; /* Memastikan gambar menutupi area tanpa terpotong */
             z-index: -2; /* Menempatkan gambar di belakang */
             transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        .cloud:hover {
-            opacity: 1;
-            transform: scale(1.05); /* Efek zoom saat hover */
         }
 
         /* Menambahkan gambar rumput di bagian bawah, hanya sebagian yang ditampilkan */
@@ -50,23 +50,22 @@
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
-        .grass:hover {
-            opacity: 1;
-            transform: scale(1.05); /* Efek zoom saat hover */
-        }
-
         h1 {
             font-size: 50px;
+            margin-bottom: 20px;
         }
 
         .logo {
-            max-width: 30%;
+            width: 40%; /* Mengatur lebar logo agar lebih responsif */
+            max-width: 300px;
+            margin-bottom: 20px;
         }
 
+        /* Kartu Pilihan */
         .option-card {
             background-color: #ffffff;
             width: auto;
-            height: 125%;
+            height: 100%;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
@@ -76,8 +75,9 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 10px;
+            padding: 20px;
             aspect-ratio: 1/1;
+            max-width: 250px;
         }
 
         .option-card:hover {
@@ -99,22 +99,38 @@
             color: black;
             text-decoration: none;
         }
+
+        /* Row Layout Adjustment */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px; /* Menambahkan jarak antar kolom */
+        }
+
+        /* Menjaga Kolom tetap Teratur pada Mobile */
+        .col-md-3 {
+            flex: 1 1 250px;
+            max-width: 250px;
+            margin-bottom: 20px;
+        }
+
     </style>
 </head>
 
 <body>
-    <div class="container text-center m-auto">
+    <div class="container text-center">
         <!-- Gambar Awan -->
         <img src="{{ asset('Resource/Cloud.png') }}" alt="Awan" class="cloud">
 
-        <img src="{{ asset('Resource/Logo.png') }}" alt="SoulCare Logo" class="logo mb-3">
+        <img src="{{ asset('Resource/Logo.png') }}" alt="SoulCare Logo" class="logo">
 
         <!-- Judul -->
         <h1 class="font-weight-bold">Selamat Datang!</h1>
 
         <!-- Pilihan -->
-        <div class="row justify-content-center mt-5">
-            <div class="col-md-3 d-flex justify-content-center">
+        <div class="row">
+            <div class="col-md-3">
                 <a href="{{ url('/login') }}">
                     <div class="option-card">
                         <img src="{{ asset('Resource/Konselor.png') }}" alt="Konselor Sebaya">
@@ -123,7 +139,7 @@
                 </a>
             </div>
 
-            <div class="col-md-3 d-flex justify-content-center">
+            <div class="col-md-3">
                 <a href="{{ url('/login') }}">
                     <div class="option-card">
                         <img src="{{ asset('Resource/GuruBK.png') }}" alt="Guru BK">
