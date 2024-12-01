@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1024, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SoulCare</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -17,6 +17,49 @@
             font-weight: normal;
             font-style: normal;
         }
+        @media (max-width: 768px) {
+        .sidebar {
+            margin-bottom: 20px; /* Memberi jarak antara sidebar dan content */
+            padding: 15px; /* Menyesuaikan padding untuk perangkat mobile */
+        }
+
+        .content {
+            margin-top: 10px; /* Memberi jarak antara konten dan sidebar */
+        }
+
+        .col-md-2 {
+            margin-bottom: 10px; /* Memberi jarak antara sidebar dan content */
+        }
+
+        .col-md-10 {
+            margin-top: 10px; /* Memberi jarak antara konten dan sidebar */
+        }
+
+        /* Menyembunyikan gambar rantai di tampilan mobile */
+        .spiral {
+            display: none;
+        }
+
+        /* Menyembunyikan teks Logout */
+        .navbar-custom a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar-custom a .logout-text {
+            display: none; /* Menyembunyikan teks Logout */
+        }
+
+        .navbar-custom a img {
+            width: 25px; /* Menyesuaikan ukuran gambar */
+            height: auto;
+        }
+
+
+    }
+
+
         body {
             background-color: #e2f0f9;
             font-family: "poppins";
@@ -26,12 +69,25 @@
             background: linear-gradient(to bottom, #BED7DD 0%, #4B979F 100%);
             color: white;
             padding: 30px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .navbar-custom h4 {
-            margin: 0;
-            color: white;
+        /* Mengatur urutan untuk logo dan logout */
+        .navbar-custom .order-1 {
+            display: flex;
+            align-items: center;
         }
+
+        .navbar-custom .order-2 {
+            display: flex;
+            align-items: center;
+            margin-left: auto;  /* Membuat elemen pindah ke kanan */
+            position: absolute; /* Menggunakan absolute untuk menempatkannya di ujung kanan */
+            right: -10px; /* Menambahkan jarak ke kanan */
+        }
+
 
         .navbar-custom a {
             color: black;
@@ -158,13 +214,14 @@
 
 <body>
     <nav class="navbar navbar-custom d-flex justify-content-between align-items-center">
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center order-1">
             <img src="{{ asset('Resource/Logo.png') }}" alt="Logo" style="width: 15%; margin-right: 10px;">
-            <p style="font-weight: 500; font-size: 35px;  font-family: 'LazyDog', sans-serif;">SoulCare</p>
+            <p style="font-weight: 500; font-size: 35px; font-family: 'LazyDog', sans-serif;">SoulCare</p>
         </div>
-        <div>
+        <div class="d-flex align-items-center order-2 ml-auto"> <!-- Menambahkan ml-auto untuk menggeser ke kanan -->
             <a href="{{ url('/') }}" class="mr-5">
-                Logout <img src="{{ asset('Resource/Logout.png') }}" alt="Logout Icon">
+                <span class="logout-text">Logout</span>
+                <img src="{{ asset('Resource/Logout.png') }}" alt="Logout Icon">
             </a>
         </div>
     </nav>

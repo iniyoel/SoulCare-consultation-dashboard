@@ -57,7 +57,7 @@ Route::middleware('auth')->group(function () {
 
     // Halaman Keluhan Guru BK
     Route::get('/Keluhan-BK', [TeacherController::class, 'showKeluhan'])->name('showKeluhan');
-        
+
     Route::get('/Ganti-Password', [UserController::class, 'showUpdatePassword'])->name('showUpdatePassword');
     Route::post('/update-password', [UserController::class, 'updatePassword'])->name('updatePassword');
     });

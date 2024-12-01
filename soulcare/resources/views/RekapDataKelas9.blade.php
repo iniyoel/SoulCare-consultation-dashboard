@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1024, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <title>SoulCare</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -19,19 +19,107 @@
             font-weight: normal;
             font-style: normal;
         }
-        body {
-            background-color: #e2f0f9;
-            font-family: "poppins"; /* Gunakan font default untuk body */
-        }
-        .navbar-custom {
-            background: linear-gradient(to bottom, #BED7DD 0%, #4B979F 100%);
-            color: white;
-            padding: 30px 15px;
+        @media (max-width: 768px) {
+        .sidebar {
+            margin-bottom: 20px; /* Memberi jarak antara sidebar dan content */
+            padding: 15px; /* Menyesuaikan padding untuk perangkat mobile */
         }
 
-        .navbar-custom h4 {
-            margin: 0;
+        .content {
+            margin-top: 10px; /* Memberi jarak antara konten dan sidebar */
+        }
+
+        .col-md-2 {
+            margin-bottom: 10px; /* Memberi jarak antara sidebar dan content */
+        }
+
+        .col-md-10 {
+            margin-top: 10px; /* Memberi jarak antara konten dan sidebar */
+        }
+
+        /* Menyembunyikan gambar rantai di tampilan mobile */
+        .spiral {
+            display: none;
+        }
+
+        /* Menyembunyikan teks Logout */
+        .navbar-custom a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar-custom a .logout-text {
+            display: none; /* Menyembunyikan teks Logout */
+        }
+
+        .navbar-custom a img {
+            width: 25px; /* Menyesuaikan ukuran gambar */
+            height: auto;
+        }
+        .dropdown-search-container .form-group .input-group,
+    .dropdown-search-container  {
+        display: none;
+    }
+
+    /* Memastikan tombol Tampilkan hijau tetap ada di bawah */
+    .dropdown-search-container .btn.btn-success {
+        display: block;
+        width: 100%;
+        margin-top: 15px; /* Menambah jarak antar elemen */
+    }
+
+    .dropdown-search-container .form-group {
+        margin-bottom: 10px;
+    }
+    .container .row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .container .row .col-md-6 {
+        width: 100%;  /* Membuat dropdown Tahun dan Bulan lebar penuh */
+        margin-bottom: 10px; /* Memberikan jarak antara dropdown */
+    }
+
+    .container .btn-primary {
+        width: 100%; /* Tombol "Tampilkan" akan memenuhi lebar */
+        margin-top: 10px; /* Memberikan sedikit ruang antara dropdown dan tombol */
+    }
+
+    }
+
+
+
+
+
+        body {
+            background-color: #e2f0f9;
+            font-family: "Poppins", sans-serif;
+        }
+
+        /* Navbar custom */
+        .navbar-custom {
+            background: linear-gradient(to bottom, #C6D899 0%, #84B297 65%);
             color: white;
+            padding: 30px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Mengatur urutan untuk logo dan logout */
+        .navbar-custom .order-1 {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-custom .order-2 {
+            display: flex;
+            align-items: center;
+            margin-left: auto;  /* Membuat elemen pindah ke kanan */
+            position: absolute; /* Menggunakan absolute untuk menempatkannya di ujung kanan */
+            right: -10px; /* Menambahkan jarak ke kanan */
         }
 
         .navbar-custom a {
@@ -47,6 +135,7 @@
             width: 45px;
             margin-left: 10px;
         }
+
         /* Garis dekoratif di kiri */
         .garis {
             width: 55px;
@@ -147,6 +236,34 @@
             max-width: 600px;
             margin: 0 auto;
         }
+        .dropdown-search-container {
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        .dropdown-search-container .form-group {
+            margin-right: 15px;
+        }
+
+        .table-responsive {
+            overflow-x: auto; /* Untuk menghindari tabel melampaui batas di perangkat kecil */
+        }
+        table {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .input-group {
+            max-width: 250px;
+        }
+
+        th {
+            background-color: #406882;
+            color: white;
+        }
+
 
         #pieChart {
             max-width: 100%;
@@ -158,13 +275,14 @@
 
 <body>
     <nav class="navbar navbar-custom d-flex justify-content-between align-items-center">
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center order-1">
             <img src="{{ asset('Resource/Logo.png') }}" alt="Logo" style="width: 15%; margin-right: 10px;">
-            <p style="font-weight: 500; font-size: 35px;  font-family: 'LazyDog';">SoulCare</p>
+            <p style="font-weight: 500; font-size: 35px; font-family: 'LazyDog', sans-serif;">SoulCare</p>
         </div>
-        <div>
+        <div class="d-flex align-items-center order-2 ml-auto"> <!-- Menambahkan ml-auto untuk menggeser ke kanan -->
             <a href="{{ url('/') }}" class="mr-5">
-                Logout <img src="{{ asset('Resource/Logout.png') }}" alt="Logout Icon">
+                <span class="logout-text">Logout</span>
+                <img src="{{ asset('Resource/Logout.png') }}" alt="Logout Icon">
             </a>
         </div>
     </nav>
@@ -260,27 +378,29 @@
                             </div>
                             <div class="form-group">
                                 <label for="searchInput" class="font-weight-bold"></label>
-                                <div class="input-group" style="width: 250px;">
+                                {{-- <div class="input-group" style="width: 250px;">
                                     <input type="text" id="searchInput" class="form-control" placeholder="Search...">
                                     <div class="input-group-append">
                                         <button class="btn btn-primary" type="button">🔍</button>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
-                        <table class="table table-striped table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Tanggal</th>
-                                    <th>Konselor</th>
-                                    <th>Nama Klien</th>
-                                    <th>Jenis Kelamin</th>
-                                    <th>Jenis Masalah</th>
-                                    <th>Deskripsi</th>
-                                    <th>Rujukan</th>
-                                </tr>
-                            </thead>
+                        <!-- Tabel -->
+                        <div class="table-responsive mt-4">
+                            <table class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Tanggal</th>
+                                        <th>Konselor</th>
+                                        <th>Nama Klien</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Jenis Masalah</th>
+                                        <th>Deskripsi</th>
+                                        <th>Rujukan</th>
+                                    </tr>
+                                </thead>
                             <tbody>
                                 @foreach ($keluhan as $index => $item)
                                     <tr>
@@ -289,11 +409,9 @@
                                         <td>{{ $item->counselor->name ?? 'Tidak ada' }}</td>
                                         <td>{{ $item->student->name }}</td>
                                         <td>{{ $item->student->gender }}</td>
-                                        <td>
-                                                {{ $item->issue_type }}
-                                        </td>
-                                        <td><a href="{{ route('showProblem', ['id' => $item->id]) }}" class="btn btn-info btn-sm"">Deskripsi</a></td>
-                                        <td>{{ $item->referral}}</td>
+                                        <td>{{ $item->issue_type }}</td>
+                                        <td><a href="{{ route('showProblem', ['id' => $item->id]) }}" class="btn btn-info btn-sm">Deskripsi</a></td>
+                                        <td>{{ $item->referral }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
