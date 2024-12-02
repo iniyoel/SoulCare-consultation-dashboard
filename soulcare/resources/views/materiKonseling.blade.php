@@ -23,8 +23,29 @@
             padding: 15px; /* Menyesuaikan padding untuk perangkat mobile */
         }
 
+        .content iframe {
+            width: 100%;  /* Pastikan lebar iframe penuh */
+            height: 300px; /* Tinggi video diperbesar */
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;  /* Menambahkan jarak bawah */
+        }
+
+        /* Mengatur konten dan elemen di dalamnya menjadi flex */
         .content {
-            margin-top: 10px; /* Memberi jarak antara konten dan sidebar */
+            display: flex;
+            flex-direction: column;  /* Menyusun konten dalam kolom */
+            padding: 20px;
+            margin-top: 10px;
+        }
+        .content .d-flex {
+            flex-direction: column; /* Mengatur item dalam kolom */
+            margin-bottom: 20px;
+        }
+
+        .content div {
+            width: 100%; /* Ensure full-width for text content */
+            margin-top: 15px;
         }
 
         .col-md-2 {
@@ -265,10 +286,10 @@
                     </div>
 
                     <!-- Tombol Kembali dan Selanjutnya -->
-                    <div class="d-flex justify-content-end">
+                    {{-- <div class="d-flex justify-content-end">
                         <!-- <button type="button" class="btn btn-save" onclick="goBack()">Kembali</button> -->
                         <button type="button" class="btn btn-save" onclick="nextPage()">Selanjutnya</button>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 
