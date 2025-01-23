@@ -290,7 +290,7 @@
                         <div class="form-group mt-4 d-flex align-items-center">
                             <label for="LinkMateri" class="mr-3" style="flex: 1; font-weight: bold;">Link Materi</label>
                             <div style="flex: 3;">
-                                <input type="text" name="link_materi" id="LinkMateri" class="form-control" required>
+                                <input type="text" name="link_materi" id="LinkMateri" class="form-control">
                             </div>
                         </div>
 
