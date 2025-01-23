@@ -171,7 +171,7 @@ class TeacherController extends Controller
         $request->validate([
             'judul_materi' => 'required|string|max:255',
             'deskripsi_masalah' => 'required|string',
-            'link_materi' => 'required|url',
+            'link_materi' => 'nullable|url',
             'file_upload' => 'required|file|mimes:pdf,doc,docx,ppt,pptx|max:102400', // Maksimal 100MB
         ]);
 
